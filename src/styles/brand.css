@@ -1,0 +1,187 @@
+/*
+ * YAT College — brand tokens + base type
+ *
+ * Source of truth for visual identity: diploma-cloud-cyber/scenario/branding/brand-pack.md
+ * (v1.0, 2026-05-26). Token semantic names (--color-primary, --color-accent, etc.)
+ * are stable; the literal palette colour-names appear in trailing comments for
+ * cross-reference with the brand pack.
+ *
+ * Zone variant: the public site uses the defaults below (warm-cream background).
+ * The intranet uses a neutral light-grey background and a slightly desaturated
+ * primary, applied via `<body data-zone="intranet">` in the intranet layout.
+ *
+ * Fonts: Source Sans 3 (primary), Source Serif 4 (optional editorial accent),
+ * JetBrains Mono (code). Loaded in each layout's <head> with explicit weights —
+ * not @imported here, so we control loading order + preload.
+ */
+
+/* ---------- Minimal reset ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, figure, blockquote { margin: 0; }
+ol, ul { padding-left: 1.25em; }
+img, svg { max-width: 100%; display: block; }
+button { font: inherit; cursor: pointer; }
+
+/* ---------- Design tokens ---------- */
+
+:root {
+  /* Palette — semantic */
+  --color-primary:      #1F5A5C;   /* Deep Teal-Green */
+  --color-accent:       #C5613B;   /* Terracotta      */
+  --color-highlight:    #C99932;   /* Muted Ochre     */
+  --color-bg:           #F8F4ED;   /* Warm Cream      */
+  --color-surface:      #FDFCF9;   /* Off-white       */
+  --color-text:         #1F2329;   /* Charcoal        */
+  --color-text-muted:   #6B6660;   /* Warm Grey       */
+  --color-border:       #E4DED3;   /* Soft Stone      */
+
+  /* Reversed-pair tokens (for text on primary/accent backgrounds) */
+  --color-on-primary:   #FDFCF9;
+  --color-on-accent:    #FDFCF9;
+  --color-on-highlight: var(--color-text);
+
+  /* Disclosure banner — site-wide chrome, brand-pack §5.3 */
+  --banner-bg:    var(--color-highlight);
+  --banner-text:  var(--color-text);
+  --banner-height: 1.75rem;        /* ~28px, within the 24–30 px target */
+
+  /* Type families (system fallbacks if web fonts fail to load) */
+  --font-sans:  "Source Sans 3", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-mono:  "JetBrains Mono", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* Type scale — fluid where the brand pack gives a range, fixed otherwise */
+  --font-size-h1:      clamp(2.5rem,  3.5vw + 1rem,    3.5rem);   /* 40 → 56 px */
+  --font-size-h2:      clamp(1.75rem, 1.5vw + 1rem,    2.25rem);  /* 28 → 36 px */
+  --font-size-h3:      clamp(1.25rem, 0.75vw + 1rem,   1.5rem);   /* 20 → 24 px */
+  --font-size-body:    1.0625rem;                                 /* 17 px      */
+  --font-size-small:   0.9375rem;                                 /* 15 px      */
+  --font-size-caption: 0.875rem;                                  /* 14 px      */
+  --font-size-banner:  0.8125rem;                                 /* 13 px      */
+
+  /* Type weights — Source Sans 3 supports 200–900; we use these */
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+  --weight-extrabold: 800;
+
+  /* Line heights */
+  --leading-tight:   1.15;
+  --leading-snug:    1.30;
+  --leading-normal:  1.55;
+  --leading-loose:   1.70;
+
+  /* Spacing scale (4 px base; doubled steps) */
+  --space-1:  0.25rem;   /*  4 */
+  --space-2:  0.5rem;    /*  8 */
+  --space-3:  0.75rem;   /* 12 */
+  --space-4:  1rem;      /* 16 */
+  --space-5:  1.5rem;    /* 24 */
+  --space-6:  2rem;      /* 32 */
+  --space-8:  3rem;      /* 48 */
+  --space-10: 4rem;      /* 64 */
+  --space-12: 6rem;      /* 96 */
+
+  /* Layout */
+  --content-max-width: 72ch;       /* readable body column */
+  --site-max-width:    1200px;     /* full layout width */
+
+  /* Radii + borders */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --border-1:  1px solid var(--color-border);
+
+  /* Focus ring — accessibility */
+  --focus-ring: 2px solid var(--color-accent);
+  --focus-offset: 2px;
+
+  /* Motion */
+  --transition-fast: 120ms ease-out;
+  --transition-base: 200ms ease-out;
+}
+
+/* ---------- Zone variant: intranet ---------- */
+/* Applied via <body data-zone="intranet"> in the intranet layout. Same identity,
+   different temperature: utility-tool feel vs. marketing-feel of the public site. */
+
+[data-zone="intranet"] {
+  --color-bg:       #F4F4F2;   /* Neutral light-grey */
+  --color-primary:  #2A6062;   /* Slightly desaturated teal-green */
+}
+
+/* ---------- Base type ---------- */
+
+html {
+  font-size: 100%;                 /* respect user-agent / accessibility settings */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size:   var(--font-size-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary);
+  line-height: var(--leading-tight);
+  font-weight: var(--weight-bold);
+}
+h1 { font-size: var(--font-size-h1); font-weight: var(--weight-extrabold); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); font-weight: var(--weight-semibold); }
+
+p {
+  max-width: var(--content-max-width);
+  line-height: var(--leading-normal);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 0.125em;
+  transition: color var(--transition-fast);
+}
+a:hover, a:focus-visible {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: 0.94em;
+}
+pre {
+  padding: var(--space-4);
+  background-color: var(--color-surface);
+  border: var(--border-1);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+  line-height: var(--leading-snug);
+}
+
+hr {
+  border: 0;
+  border-top: var(--border-1);
+  margin: var(--space-6) 0;
+}
+
+/* Reduce motion when the user prefers it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

@@ -1,17 +1,294 @@
 ---
+import PublicLayout from '../layouts/PublicLayout.astro';
+import PlaceholderImage from '../components/PlaceholderImage.astro';
 
+// News-card date labels are derived at build time so they stay current
+// without needing manual edits each year. The narrative spacing (two cards
+// in the current year, two in the previous year) is preserved as the year
+// rolls over. The body content of the news items doesn't auto-update —
+// replace with real announcements before live delivery.
+const currentYear = new Date().getFullYear();
+const previousYear = currentYear - 1;
+
+const studyAreaTeasers = [
+  { href: '/study/business',                title: 'Business' },
+  { href: '/study/community-services',      title: 'Community services' },
+  { href: '/study/education',               title: 'Education' },
+  { href: '/study/information-technology',  title: 'Information technology' },
+  { href: '/study/health',                  title: 'Health' },
+  { href: '/study/hospitality',             title: 'Hospitality' },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<PublicLayout
+  title="Home"
+  description="YAT College — practical training for the next step in your working life. Certificate and diploma qualifications across six study areas, delivered from our Cremorne campus."
+>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Practical training for the next step in your working life.</h1>
+      <p class="hero-lede">
+        Over 50 certificate and diploma qualifications across six study areas
+        — delivered from our single Cremorne campus, in February and July intakes,
+        full-time or part-time.
+      </p>
+      <p class="hero-cta">
+        <a href="/study/" class="cta-primary">Browse study areas</a>
+        <a href="/apply" class="cta-secondary">How to enrol →</a>
+      </p>
+    </div>
+    <div class="hero-image">
+      <PlaceholderImage
+        alt="Hero image — adult learner (30s-40s, visibly a career-changer rather than school-leaver) in a hands-on YAT training environment, mid-task, focused. Could be any of our faculty areas. Natural light, warm white balance, candid not posed."
+        ratio="4/3"
+      />
+    </div>
+  </section>
+
+  <section class="why-yat">
+    <h2>Why train at YAT?</h2>
+    <div class="reasons">
+      <article class="reason">
+        <h3>Industry-experienced trainers</h3>
+        <p>
+          Our teachers have worked in the field. They'll show you what the work
+          actually looks like, not just the theory.
+        </p>
+      </article>
+      <article class="reason">
+        <h3>Outcomes-focused</h3>
+        <p>
+          Every course is mapped to the roles employers are hiring for now. You'll
+          finish ready to apply for specific jobs, not "develop your potential".
+        </p>
+      </article>
+      <article class="reason">
+        <h3>Built for working adults</h3>
+        <p>
+          Most students are juggling study with paid work, family, or both.
+          Part-time pathways and flexible scheduling are the norm here, not
+          the exception.
+        </p>
+      </article>
+      <article class="reason">
+        <h3>Single Cremorne campus</h3>
+        <p>
+          Everything happens in one place — easy to get to, easy to find your
+          way around, easy to know your trainers and classmates.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="areas-teaser">
+    <h2>Six study areas</h2>
+    <p>
+      Each area leads to specific qualifications and clear career outcomes.
+      Pick the one that lines up with where you want to be working in the next
+      year or two.
+    </p>
+    <div class="area-chips">
+      {studyAreaTeasers.map(area => (
+        <a href={area.href} class="area-chip">{area.title}</a>
+      ))}
+    </div>
+    <p class="see-all">
+      <a href="/study/">See all study areas →</a>
+    </p>
+  </section>
+
+  <section class="news">
+    <h2>News and notices</h2>
+    <div class="news-grid">
+      <article class="news-item">
+        <span class="news-date">February {currentYear}</span>
+        <h3>Next intake — applications now open</h3>
+        <p>
+          Apply now to start next semester across all six study areas.
+          Application processing takes around five working days;
+          subsidised-place eligibility is assessed during application.
+        </p>
+        <a href="/apply" class="news-link">How to enrol →</a>
+      </article>
+
+      <article class="news-item">
+        <span class="news-date">January {currentYear}</span>
+        <h3>Open day — Saturday 21 February</h3>
+        <p>
+          Visit our Cremorne campus, meet trainers across all six study areas,
+          tour the IT and cyber labs, the commercial kitchens, the health-sim
+          spaces, and the early-childhood teaching rooms. Drop in any time
+          between 10 am and 2 pm.
+        </p>
+        <a href="/locations" class="news-link">Visit us →</a>
+      </article>
+
+      <article class="news-item">
+        <span class="news-date">December {previousYear}</span>
+        <h3>New cyber security lab opens at Cremorne</h3>
+        <p>
+          Our refurbished IT precinct now includes a dedicated cyber security
+          lab with isolated network segments for safe practice with offensive
+          and defensive security tooling. Used by the Diploma of IT (Cloud and
+          Cyber Security) cohort from the February intake onwards.
+        </p>
+        <a href="/study/information-technology" class="news-link">Information technology at YAT →</a>
+      </article>
+
+      <article class="news-item">
+        <span class="news-date">November {previousYear}</span>
+        <h3>Career changers info session</h3>
+        <p>
+          Considering a career change? Hear from recent graduates who came to
+          YAT after a decade or more in a different field. Light refreshments,
+          short presentations, plenty of time for questions.
+        </p>
+        <a href="/contact" class="news-link">Register interest →</a>
+      </article>
+    </div>
+  </section>
+</PublicLayout>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
+    margin: var(--space-6) 0 var(--space-10);
+  }
+  @media (max-width: 800px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 4vw + 1rem, 3.5rem);
+    margin-bottom: var(--space-4);
+    line-height: 1.1;
+  }
+  .hero-lede {
+    font-size: 1.25rem;
+    line-height: var(--leading-snug);
+    color: var(--color-text);
+    margin-bottom: var(--space-5);
+  }
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    align-items: center;
+  }
+  .cta-primary {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    padding: var(--space-3) var(--space-5);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    font-weight: var(--weight-semibold);
+    transition: background-color var(--transition-fast);
+  }
+  .cta-primary:hover {
+    background-color: #15464a;
+    color: var(--color-on-primary);
+  }
+  .cta-secondary {
+    color: var(--color-accent);
+    font-weight: var(--weight-semibold);
+    text-decoration: none;
+  }
+  .cta-secondary:hover {
+    text-decoration: underline;
+  }
+  .why-yat, .areas-teaser, .news {
+    margin: var(--space-10) 0;
+  }
+  .why-yat h2, .areas-teaser h2, .news h2 {
+    font-size: var(--font-size-h2);
+    margin-bottom: var(--space-5);
+  }
+  .reasons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-5);
+  }
+  .reason h3 {
+    font-size: var(--font-size-h3);
+    margin-bottom: var(--space-2);
+  }
+  .reason p {
+    font-size: var(--font-size-body);
+    line-height: var(--leading-normal);
+  }
+  .areas-teaser p {
+    max-width: var(--content-max-width);
+    margin-bottom: var(--space-5);
+  }
+  .area-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin: var(--space-5) 0;
+  }
+  .area-chip {
+    display: inline-block;
+    padding: var(--space-3) var(--space-5);
+    background-color: var(--color-surface);
+    border: var(--border-1);
+    border-radius: 999px;
+    text-decoration: none;
+    color: var(--color-primary);
+    font-weight: var(--weight-medium);
+    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+  }
+  .area-chip:hover {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    border-color: var(--color-primary);
+  }
+  .see-all {
+    margin-top: var(--space-4);
+    font-weight: var(--weight-semibold);
+  }
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-5);
+  }
+  .news-item {
+    padding: var(--space-5);
+    background-color: var(--color-surface);
+    border: var(--border-1);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+  }
+  .news-date {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-2);
+  }
+  .news-item h3 {
+    font-size: var(--font-size-h3);
+    margin-bottom: var(--space-2);
+  }
+  .news-item p {
+    font-size: var(--font-size-small);
+    line-height: var(--leading-snug);
+    margin-bottom: var(--space-3);
+    flex: 1;
+  }
+  .news-link {
+    font-size: var(--font-size-small);
+    font-weight: var(--weight-semibold);
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .news-link:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+/**
+ * Typographic logo placeholder per brand-pack §4.3 direction:
+ * "YAT" monogram in primary teal-green, ExtraBold; "COLLEGE" smaller below in
+ * letter-spaced caps. A vector logo sketch round (per brand-pack §6 follow-up 2)
+ * will replace this. Pure CSS keeps it always-on-brand without an SVG dependency.
+ */
+---
+
+<a href="/" class="logo" aria-label="YAT College — home">
+  <span class="logo-mark">YAT</span>
+  <span class="logo-name">COLLEGE</span>
+</a>
+
+<style>
+  .logo {
+    display: inline-flex;
+    flex-direction: column;
+    text-decoration: none;
+    line-height: 1;
+    color: var(--color-primary);
+    transition: opacity var(--transition-fast);
+  }
+  .logo:hover, .logo:focus-visible {
+    opacity: 0.8;
+  }
+  .logo-mark {
+    font-family: var(--font-sans);
+    font-weight: var(--weight-extrabold);
+    font-size: 1.75rem;
+    letter-spacing: -0.02em;
+  }
+  .logo-name {
+    font-family: var(--font-sans);
+    font-weight: var(--weight-medium);
+    font-size: 0.6875rem;
+    letter-spacing: 0.25em;
+    margin-top: 0.25em;
+  }
+</style>

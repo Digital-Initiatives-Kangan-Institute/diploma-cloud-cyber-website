@@ -1,0 +1,80 @@
+---
+/**
+ * Sign-in gate layout. Used only by /sign-in (and any future password-reset etc).
+ * Distinct from PublicLayout: no public header, no public footer, no public nav.
+ * A pared-back layout focuses attention on the sign-in form, the way real
+ * corporate SSO pages do. Per scenario/website.md §3, the form authenticates
+ * no one; submit redirects to /intranet/.
+ *
+ * Carries the persistent disclosure banner (every page on every zone does).
+ */
+
+import '../styles/brand.css';
+import DisclosureBanner from '../components/DisclosureBanner.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const fullTitle = `${title} — YAT College`;
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap"
+    />
+
+    <title>{fullTitle}</title>
+    {description && <meta name="description" content={description} />}
+  </head>
+  <body class="signin-body">
+    <DisclosureBanner />
+    <main class="signin-main">
+      <slot />
+    </main>
+    <footer class="signin-footer">
+      <a href="/">← Back to YAT College website</a>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .signin-body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .signin-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-8) var(--space-5);
+  }
+  .signin-footer {
+    text-align: center;
+    padding: var(--space-5);
+    font-size: var(--font-size-small);
+  }
+  .signin-footer a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+  .signin-footer a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+</style>

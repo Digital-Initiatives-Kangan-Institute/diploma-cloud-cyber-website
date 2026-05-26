@@ -1,0 +1,98 @@
+---
+import PublicLayout from '../layouts/PublicLayout.astro';
+---
+
+<PublicLayout
+  title="Page not found"
+  description="The page you're looking for doesn't exist or has moved."
+>
+  <section class="not-found">
+    <p class="status-tag">404</p>
+    <h1>We couldn't find that page</h1>
+    <p class="lede">
+      The link you followed may be out of date, or the page may have moved.
+      Try one of the destinations below.
+    </p>
+
+    <div class="quick-links">
+      <a href="/" class="quick-link">
+        <h2>Home</h2>
+        <p>The YAT College homepage.</p>
+      </a>
+      <a href="/study/" class="quick-link">
+        <h2>Study areas</h2>
+        <p>The six study areas at YAT — business through hospitality.</p>
+      </a>
+      <a href="/apply" class="quick-link">
+        <h2>How to enrol</h2>
+        <p>Application process, intake dates, fees and funding.</p>
+      </a>
+      <a href="/contact" class="quick-link">
+        <h2>Contact</h2>
+        <p>Admissions, student services, and reception details.</p>
+      </a>
+    </div>
+
+    <p class="fallback">
+      Still can't find what you're after? <a href="/contact">Get in touch</a>
+      and our team will help.
+    </p>
+  </section>
+</PublicLayout>
+
+<style>
+  .not-found {
+    max-width: var(--content-max-width);
+    margin: var(--space-8) auto;
+  }
+  .status-tag {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-caption);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-2);
+    font-weight: var(--weight-bold);
+  }
+  h1 {
+    margin-bottom: var(--space-4);
+  }
+  .lede {
+    font-size: 1.25rem;
+    line-height: var(--leading-snug);
+    margin-bottom: var(--space-8);
+  }
+  .quick-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+  }
+  .quick-link {
+    display: block;
+    padding: var(--space-5);
+    background-color: var(--color-surface);
+    border: var(--border-1);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--color-text);
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+  .quick-link:hover, .quick-link:focus-visible {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+  .quick-link h2 {
+    font-size: var(--font-size-h3);
+    margin-bottom: var(--space-2);
+  }
+  .quick-link p {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    line-height: var(--leading-snug);
+  }
+  .fallback {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+  }
+</style>

@@ -1,0 +1,286 @@
+---
+/**
+ * Dynamic route generating the six study-area pages.
+ * As each area gets its own dedicated detail content beyond what's structured here,
+ * peel that area out into its own file (src/pages/study/{area}.astro) — same props
+ * shape, fuller content.
+ */
+import PublicLayout from '../../layouts/PublicLayout.astro';
+import PlaceholderImage from '../../components/PlaceholderImage.astro';
+
+export function getStaticPaths() {
+  const AREAS = {
+    'business': {
+      title: 'Business',
+      blurb: 'Bookkeeping, business administration, marketing, leadership — practical qualifications for office and management roles.',
+      imageAlt: 'Adult learners in a modern business classroom at YAT — laptops open, collaborative discussion. Mixed-age cohort, daytime, natural light. Should read as a working-adult learning environment, not undergraduate students.',
+      description: [
+        "Business at YAT covers the core skills every workplace needs to keep running — bookkeeping, administration, marketing, customer service, supervision. Our courses are built for people moving into office work, stepping up to team-lead or supervisor roles, or starting their own small business.",
+        "Most students study while continuing to work. Classes are scheduled to fit around weekday and evening work patterns, and many of our trainers run their own businesses or consult into industry between teaching, so the examples in the classroom are current.",
+      ],
+      qualifications: [
+        'Certificate III in Business',
+        'Certificate IV in Business',
+        'Certificate IV in Accounting and Bookkeeping',
+        'Diploma of Business (Leadership)',
+        'Diploma of Business (Marketing)',
+      ],
+      careerOutcomes: [
+        'Business administrator / office coordinator',
+        'Bookkeeper or assistant accountant',
+        'Marketing assistant or marketing coordinator',
+        'Team leader or first-line supervisor',
+        'Operations support across small and medium businesses',
+        'Small-business owner or sole trader',
+      ],
+    },
+    'community-services': {
+      title: 'Community services',
+      blurb: 'Aged care, disability support, mental health, youth work and family support — direct pathways into the care sector.',
+      imageAlt: 'Community-services student practicing in a simulated client-services environment — empathetic interaction, professional but warm setting. Visibly adult learners, diverse cohort.',
+      description: [
+        "The community services sector is hiring across Victoria for support workers, case workers, and coordinators — particularly in aged care, disability, mental health, and family services. Our courses focus on practical skills with extensive supervised placement so you graduate with real experience, not just classroom knowledge.",
+        "We build cohorts that reflect the workforce — adult learners moving sideways from related sectors, people returning to paid work, and career changers attracted to the sector's strong job security. Trainers are current or recent practitioners themselves.",
+      ],
+      qualifications: [
+        'Certificate III in Individual Support (Ageing, Disability, Home and Community)',
+        'Certificate IV in Ageing Support',
+        'Certificate IV in Disability Support',
+        'Certificate IV in Mental Health',
+        'Certificate IV in Youth Work',
+        'Diploma of Community Services',
+      ],
+      careerOutcomes: [
+        'Personal care worker (residential or in-home aged care)',
+        'Disability support worker',
+        'Mental health peer worker or support worker',
+        'Youth worker',
+        'Community services case worker',
+        'Family support coordinator',
+      ],
+    },
+    'education': {
+      title: 'Education',
+      blurb: 'Education support, early childhood education, and pathways into school-based assistant roles.',
+      imageAlt: 'Early-childhood-education student in a simulated classroom space, engaging with educational materials. Should look like supervised teaching practice, not a real school.',
+      description: [
+        "Education support roles — teacher's aide, integration aide, early childhood educator — are in steady demand across Victorian schools and early-learning centres. Our courses prepare you for working under qualified teacher direction in primary, secondary and special-needs settings, or as a qualified educator in long-day-care and outside-school-hours-care services.",
+        "Placements are central to the course design — you'll work in real schools and early-learning centres alongside experienced educators, with structured support from your YAT trainer throughout. Most graduates secure placement-based offers before completion.",
+      ],
+      qualifications: [
+        'Certificate III in Education Support',
+        'Certificate IV in Education Support',
+        'Certificate III in Early Childhood Education and Care',
+        'Diploma of Early Childhood Education and Care',
+      ],
+      careerOutcomes: [
+        'Education support worker (primary, secondary, special-needs settings)',
+        'Integration aide',
+        'Early childhood educator',
+        'Outside-school-hours-care coordinator',
+        'Lead educator at a long-day-care service',
+        'Pathway into the Bachelor of Education',
+      ],
+    },
+    'information-technology': {
+      title: 'Information technology',
+      blurb: 'IT support, networking, cloud, and cyber security — qualifications that map to current industry demand.',
+      imageAlt: 'IT lab at YAT — adult learners at workstations with multiple monitors, server-rack visible in background. Hands-on, technical, contemporary. Cohort visibly skewed towards 25–40 age range.',
+      description: [
+        "IT remains one of the steadiest hiring sectors in Victoria — cloud, cyber security, network operations, IT support. Our courses are mapped to current industry roles and current technology, not last decade's tech. The Cremorne campus has dedicated IT and cyber labs with current-generation hardware and access to cloud environments that students use throughout their study.",
+        "Most students are working professionals stepping sideways into IT, IT-support staff moving into specialist roles, or recent Certificate IV graduates building toward a diploma. Trainers bring current industry experience and real-world examples into the classroom.",
+      ],
+      qualifications: [
+        'Certificate IV in Information Technology (Networking specialisation)',
+        'Certificate IV in Cyber Security',
+        'Diploma of Information Technology (Cloud and Cyber Security) — ICT50220',
+      ],
+      careerOutcomes: [
+        'IT support technician / service desk',
+        'Network administrator (junior)',
+        'Cyber security technician',
+        'Cloud support engineer',
+        'IT systems administrator',
+        'Service desk team lead with cloud or security specialisation',
+      ],
+    },
+    'health': {
+      title: 'Health',
+      blurb: 'Nursing support, pathology collection, allied health assistance, and medical reception.',
+      imageAlt: 'Health-services student in a simulated clinical environment at YAT — patient mannequin, vital-signs equipment, learner in scrubs practicing procedure. Clean, well-lit, professional.',
+      description: [
+        "Allied health and nursing-support roles — assistant in nursing, pathology collector, medical receptionist, allied health assistant — are critical to how Victorian health services operate. Our courses combine classroom learning with simulated clinical practice in our health-sim spaces, and supervised placement in real health settings.",
+        "Cohorts are typically a mix of career changers from service or admin backgrounds, returning workers, and pathway students moving toward nursing or allied-health degrees. Trainers are practising clinicians or recent practitioners.",
+      ],
+      qualifications: [
+        'Certificate III in Individual Support (Healthcare stream)',
+        'Certificate III in Health Services Assistance',
+        'Certificate III in Pathology Collection',
+        'Certificate IV in Allied Health Assistance',
+        'Certificate IV in Medical Practice Assisting',
+      ],
+      careerOutcomes: [
+        'Assistant in nursing',
+        'Allied health assistant (physiotherapy, OT, speech pathology support)',
+        'Pathology collector',
+        'Medical receptionist',
+        'Health services assistant',
+        'Pathway into a Diploma of Nursing or undergraduate allied health',
+      ],
+    },
+    'hospitality': {
+      title: 'Hospitality',
+      blurb: 'Commercial cookery, patisserie, cafe operations, and hospitality management.',
+      imageAlt: 'Commercial kitchen at YAT — adult chef-in-training plating a dish, instructor adjacent, stainless-steel benches, warm lighting. Reads as a working teaching kitchen.',
+      description: [
+        "Melbourne's hospitality industry — restaurants, cafes, hotels, catering, function venues — needs trained chefs, pastry chefs, baristas, and hospitality managers. Our commercial kitchens are working teaching kitchens, with regular service to staff and visitors, so students cook for real diners, not just assessment plates.",
+        "The cohort spans visa holders, career changers, hospitality staff stepping up to qualified-chef status, and people pursuing the trade out of long-standing interest. Trainers are working or recent chefs and venue managers.",
+      ],
+      qualifications: [
+        'Certificate III in Commercial Cookery',
+        'Certificate IV in Commercial Cookery',
+        'Certificate III in Patisserie',
+        'Certificate IV in Patisserie',
+        'Certificate IV in Hospitality',
+        'Diploma of Hospitality Management',
+      ],
+      careerOutcomes: [
+        'Chef (commercial kitchens, hotels, restaurants)',
+        'Pastry chef / patissier',
+        'Sous chef / chef de partie',
+        'Cafe operator or barista lead',
+        'Hospitality supervisor or duty manager',
+        'Catering and events coordinator',
+      ],
+    },
+  };
+
+  return Object.entries(AREAS).map(([slug, data]) => ({
+    params: { area: slug },
+    props: { data },
+  }));
+}
+
+const { data } = Astro.props;
+const hasFeaturedCourses = Array.isArray(data.featuredCourses) && data.featuredCourses.length > 0;
+---
+
+<PublicLayout
+  title={data.title}
+  description={`${data.title} at YAT College — ${data.blurb}`}
+>
+  <p class="breadcrumbs"><a href="/study/">Study areas</a> · {data.title}</p>
+
+  <h1>{data.title} at YAT</h1>
+
+  <p class="lede">{data.blurb}</p>
+
+  <PlaceholderImage alt={data.imageAlt} ratio="21/9" />
+
+  <section class="description">
+    {data.description.map((para: string) => <p>{para}</p>)}
+  </section>
+
+  <section class="qualifications">
+    <h2>Qualifications offered</h2>
+    {hasFeaturedCourses && (
+      <ul class="course-list course-list-featured">
+        {data.featuredCourses.map((course: { title: string; href: string }) => (
+          <li><a href={course.href}>{course.title}</a></li>
+        ))}
+      </ul>
+    )}
+    <ul class="course-list">
+      {data.qualifications.map((q: string) => <li>{q}</li>)}
+    </ul>
+    <p class="qual-note">
+      For unit lists, fees, and intake details on any of the above, <a href="/contact">contact admissions</a>.
+    </p>
+  </section>
+
+  <section class="career-outcomes">
+    <h2>Career outcomes</h2>
+    <p>Graduates of our {data.title.toLowerCase()} qualifications typically move into roles such as:</p>
+    <ul class="outcome-list">
+      {data.careerOutcomes.map((role: string) => <li>{role}</li>)}
+    </ul>
+  </section>
+
+  <section class="next-step">
+    <p>
+      <a href="/apply">How to enrol</a> · <a href="/study/">All study areas</a>
+    </p>
+  </section>
+</PublicLayout>
+
+<style>
+  .breadcrumbs {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+  }
+  .breadcrumbs a {
+    color: var(--color-text-muted);
+  }
+  .lede {
+    font-size: 1.25rem;
+    line-height: var(--leading-snug);
+    max-width: var(--content-max-width);
+    margin-bottom: var(--space-5);
+  }
+  .description {
+    max-width: var(--content-max-width);
+    margin: var(--space-5) 0;
+  }
+  .description p {
+    margin-bottom: var(--space-4);
+  }
+  .qualifications, .career-outcomes {
+    margin: var(--space-6) 0;
+  }
+  .qualifications h2, .career-outcomes h2 {
+    font-size: var(--font-size-h2);
+    margin-bottom: var(--space-4);
+  }
+  .course-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4) 0;
+    max-width: var(--content-max-width);
+  }
+  .course-list li {
+    padding: var(--space-3) 0;
+    border-bottom: var(--border-1);
+    line-height: var(--leading-snug);
+  }
+  .course-list-featured li {
+    background-color: var(--color-surface);
+    padding: var(--space-3) var(--space-4);
+    border: var(--border-1);
+    border-left: 4px solid var(--color-primary);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-3);
+  }
+  .course-list-featured a {
+    font-weight: var(--weight-semibold);
+  }
+  .qual-note {
+    font-size: var(--font-size-small);
+    color: var(--color-text-muted);
+    margin-top: var(--space-3);
+  }
+  .outcome-list {
+    margin: var(--space-4) 0 0;
+    padding-left: var(--space-5);
+    max-width: var(--content-max-width);
+  }
+  .outcome-list li {
+    padding: var(--space-2) 0;
+    line-height: var(--leading-snug);
+  }
+  .next-step {
+    margin-top: var(--space-8);
+    padding-top: var(--space-5);
+    border-top: var(--border-1);
+  }
+</style>

@@ -1,0 +1,62 @@
+---
+/**
+ * Public-zone layout — warm cream background, marketing tone.
+ * Wraps every page under the public root (homepage, /study, /about, /apply,
+ * /contact, /locations, /sign-in). Renders the persistent disclosure banner,
+ * loads Source Sans 3, applies the brand-pack tokens.
+ *
+ * Counterpart: src/layouts/IntranetLayout.astro (TBD) — same identity, swaps
+ * body[data-zone="intranet"] for the utility-tool variant per brand-pack §5.1.
+ */
+
+import '../styles/brand.css';
+import DisclosureBanner from '../components/DisclosureBanner.astro';
+import PublicHeader from '../components/PublicHeader.astro';
+import PublicFooter from '../components/PublicFooter.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const fullTitle = `${title} — YAT College`;
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    {/* Source Sans 3 — primary humanist sans per brand-pack §4.2 */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;800&display=swap"
+    />
+
+    <title>{fullTitle}</title>
+    {description && <meta name="description" content={description} />}
+  </head>
+  <body>
+    <DisclosureBanner />
+    <PublicHeader />
+    <main class="page">
+      <slot />
+    </main>
+    <PublicFooter />
+  </body>
+</html>
+
+<style>
+  .page {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-5);
+  }
+</style>

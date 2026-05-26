@@ -1,0 +1,119 @@
+---
+/**
+ * Public-zone header. Logo on the left, primary nav centre, sign-in CTA right.
+ * Current path is used to mark the active nav item (covers both exact match
+ * and sub-paths — e.g. /about/strategic-plan still highlights "About").
+ */
+
+import LogoPlaceholder from './LogoPlaceholder.astro';
+
+const navItems = [
+  { label: 'Study',     href: '/study/'    },
+  { label: 'About',     href: '/about/'    },
+  { label: 'Locations', href: '/locations' },
+  { label: 'Apply',     href: '/apply'     },
+  { label: 'Contact',   href: '/contact'   },
+];
+
+const currentPath = Astro.url.pathname;
+
+const isActive = (href: string) => {
+  if (href === '/') return currentPath === '/';
+  const normalisedHref = href.replace(/\/$/, '');
+  const normalisedPath = currentPath.replace(/\/$/, '');
+  return normalisedPath === normalisedHref ||
+         normalisedPath.startsWith(normalisedHref + '/');
+};
+---
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <LogoPlaceholder />
+    <nav class="primary-nav" aria-label="Main">
+      <ul>
+        {navItems.map(item => (
+          <li>
+            <a
+              href={item.href}
+              class:list={['nav-link', { active: isActive(item.href) }]}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <a href="/sign-in" class="signin-button">Staff sign-in</a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: var(--border-1);
+    background-color: var(--color-bg);
+  }
+  .site-header-inner {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+    padding: var(--space-4) var(--space-5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+  }
+  .primary-nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: var(--space-2);
+  }
+  .nav-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: var(--weight-medium);
+    font-size: var(--font-size-small);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+  }
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    color: var(--color-primary);
+  }
+  .nav-link.active {
+    color: var(--color-primary);
+    background-color: rgba(31, 90, 92, 0.08);
+  }
+  .signin-button {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    text-decoration: none;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-sm);
+    font-weight: var(--weight-medium);
+    font-size: var(--font-size-small);
+    transition: background-color var(--transition-fast);
+    white-space: nowrap;
+  }
+  .signin-button:hover,
+  .signin-button:focus-visible {
+    background-color: #15464a;
+    color: var(--color-on-primary);
+  }
+
+  @media (max-width: 800px) {
+    .site-header-inner {
+      flex-wrap: wrap;
+      gap: var(--space-3);
+    }
+    .primary-nav {
+      order: 3;
+      flex-basis: 100%;
+    }
+    .primary-nav ul {
+      flex-wrap: wrap;
+    }
+  }
+</style>

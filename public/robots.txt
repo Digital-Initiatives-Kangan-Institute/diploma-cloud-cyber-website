@@ -1,0 +1,13 @@
+# YAT College — public site crawl rules
+#
+# Search engines may index the public-facing site. The intranet ("/intranet/")
+# is a simulated post-sign-in area for educational scenario use only — it must
+# not be indexed. The sign-in gate ("/sign-in") is operational chrome and not
+# useful in search results.
+
+User-agent: *
+Allow: /
+Disallow: /intranet/
+Disallow: /sign-in
+
+Sitemap: https://yat-college.example/sitemap-index.xml

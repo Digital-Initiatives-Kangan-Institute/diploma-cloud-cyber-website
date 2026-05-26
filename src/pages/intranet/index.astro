@@ -1,0 +1,66 @@
+---
+/**
+ * Intranet landing — placeholder so the /sign-in submit doesn't 404.
+ * Intranet structure + content is worked through separately, doc-by-doc,
+ * per scenario/website.md §2.3. For now: a holding page that acknowledges
+ * the zone shift through the SSO gate.
+ *
+ * Intentionally uses PublicLayout for now — proper IntranetLayout (with the
+ * neutral-grey zone variant per brand-pack §5.1) gets built when real intranet
+ * pages start landing.
+ */
+
+import PublicLayout from '../../layouts/PublicLayout.astro';
+---
+
+<PublicLayout
+  title="Intranet"
+  description="YAT College staff intranet — under construction."
+>
+  <h1>YAT College Intranet</h1>
+
+  <p class="lede">
+    Welcome. The staff intranet is being built — section by section.
+  </p>
+
+  <div class="content-stub">
+    <p>
+      Intranet sections that will appear here once their content is migrated:
+    </p>
+    <ul>
+      <li><strong>ICT</strong> — environment overview, network diagrams, server status, hardware inventory, backup-recovery procedures</li>
+      <li><strong>Policies &amp; procedures</strong> — change management, user access, acceptable use, WHS, privacy, backup retention, security incident response, records management</li>
+      <li><strong>Projects</strong> — current and past consulting engagements, including the LMS cloud migration</li>
+      <li><strong>Reference &amp; standards</strong> — industry standards, legislative requirements, reference architectures</li>
+      <li><strong>Templates</strong> — downloadable document templates (.docx, .pptx)</li>
+    </ul>
+  </div>
+
+  <p>
+    <a href="/">← Back to YAT College website</a>
+  </p>
+</PublicLayout>
+
+<style>
+  .lede {
+    font-size: 1.25rem;
+    line-height: var(--leading-snug);
+    max-width: var(--content-max-width);
+    margin-bottom: var(--space-6);
+  }
+  .content-stub {
+    padding: var(--space-5);
+    background-color: var(--color-surface);
+    border: var(--border-1);
+    border-left: 4px solid var(--color-highlight);
+    border-radius: var(--radius-sm);
+    margin: var(--space-5) 0;
+  }
+  .content-stub ul {
+    margin-top: var(--space-3);
+  }
+  .content-stub li {
+    padding: var(--space-2) 0;
+    line-height: var(--leading-snug);
+  }
+</style>

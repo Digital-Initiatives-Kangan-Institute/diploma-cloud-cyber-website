@@ -1,0 +1,147 @@
+---
+/**
+ * Mock SSO sign-in gate. Per scenario/website.md §3:
+ *  - Single static HTML form.
+ *  - No backend, no auth, no data store.
+ *  - Submit (with any input, no input, anything) → redirects to /intranet/.
+ *  - autocomplete="off" on fields to discourage browser/password-manager capture.
+ *
+ * Visual register: corporate-SSO-adjacent (Entra / Okta-flavoured) but not
+ * matching any specific real-world product. Carries YAT brand identity.
+ */
+
+import SignInLayout from '../layouts/SignInLayout.astro';
+import LogoPlaceholder from '../components/LogoPlaceholder.astro';
+---
+
+<SignInLayout
+  title="Sign in"
+  description="Sign in to the YAT College staff intranet."
+>
+  <div class="signin-card">
+    <div class="signin-logo">
+      <LogoPlaceholder />
+    </div>
+
+    <h1>Sign in to YAT College Intranet</h1>
+
+    <form action="/intranet/" method="get" autocomplete="off">
+      <div class="field">
+        <label for="username">Username or email</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="you@yat-college.example"
+          autocomplete="off"
+          spellcheck="false"
+        />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          autocomplete="off"
+        />
+      </div>
+      <button type="submit">Sign in</button>
+      <p class="forgot">
+        <a href="#" onclick="event.preventDefault(); alert('Contact your YAT ICT Service Desk to reset your password.');">Forgot password?</a>
+      </p>
+    </form>
+
+    <p class="simulated-notice">
+      This is a simulated environment for educational use only. Do not enter
+      real credentials.
+    </p>
+  </div>
+</SignInLayout>
+
+<style>
+  .signin-card {
+    width: 100%;
+    max-width: 420px;
+    background-color: var(--color-surface);
+    border: var(--border-1);
+    border-radius: var(--radius-md);
+    padding: var(--space-8) var(--space-6);
+    box-shadow: 0 2px 8px rgba(31, 35, 41, 0.06);
+  }
+  .signin-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-6);
+  }
+  h1 {
+    font-size: 1.5rem;
+    font-weight: var(--weight-semibold);
+    text-align: center;
+    margin-bottom: var(--space-6);
+    color: var(--color-text);
+  }
+  .field {
+    margin-bottom: var(--space-4);
+  }
+  .field label {
+    display: block;
+    font-size: var(--font-size-small);
+    font-weight: var(--weight-medium);
+    margin-bottom: var(--space-1);
+    color: var(--color-text);
+  }
+  .field input {
+    width: 100%;
+    padding: var(--space-3);
+    font: inherit;
+    font-size: var(--font-size-body);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    transition: border-color var(--transition-fast);
+  }
+  .field input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(31, 90, 92, 0.15);
+  }
+  button[type="submit"] {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    border: none;
+    padding: var(--space-3);
+    font-weight: var(--weight-semibold);
+    font-size: var(--font-size-body);
+    border-radius: var(--radius-sm);
+    margin-top: var(--space-2);
+    transition: background-color var(--transition-fast);
+  }
+  button[type="submit"]:hover {
+    background-color: #15464a;
+  }
+  .forgot {
+    text-align: center;
+    margin-top: var(--space-4);
+    font-size: var(--font-size-small);
+  }
+  .forgot a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+  .forgot a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+  .simulated-notice {
+    margin-top: var(--space-6);
+    padding-top: var(--space-4);
+    border-top: var(--border-1);
+    font-size: var(--font-size-caption);
+    color: var(--color-text-muted);
+    text-align: center;
+    line-height: var(--leading-snug);
+  }
+</style>

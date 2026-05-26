@@ -1,0 +1,128 @@
+---
+/**
+ * Public-zone footer. Four nav columns + address + disclaimer.
+ * Kept text-light — chrome, not content. The disclosure banner at the top of the
+ * page carries the simulated-environment notice; this footer just nods to it
+ * once more for visitors who scroll past the banner without noticing.
+ */
+
+const sections = [
+  {
+    title: 'Study with us',
+    links: [
+      { label: 'Study areas',  href: '/study/' },
+      { label: 'How to enrol', href: '/apply' },
+    ],
+  },
+  {
+    title: 'About YAT',
+    links: [
+      { label: 'About',           href: '/about/' },
+      { label: 'Strategic plan',  href: '/about/strategic-plan' },
+      { label: 'Our people',      href: '/about/people' },
+    ],
+  },
+  {
+    title: 'Visit + contact',
+    links: [
+      { label: 'Cremorne campus', href: '/locations' },
+      { label: 'Contact',         href: '/contact' },
+    ],
+  },
+  {
+    title: 'Staff',
+    links: [
+      { label: 'Intranet sign-in', href: '/sign-in' },
+    ],
+  },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="footer-cols">
+      {sections.map(section => (
+        <div class="footer-col">
+          <h4>{section.title}</h4>
+          <ul>
+            {section.links.map(link => (
+              <li><a href={link.href}>{link.label}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    <div class="footer-meta">
+      <p class="footer-address">
+        YAT College — Cremorne Campus<br />
+        175 Cremorne Street, Cremorne VIC 3121
+      </p>
+      <p class="footer-disclaimer">
+        Simulated educational environment. YAT College is a fictional case-study organisation. &copy; {year}.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: var(--border-1);
+    background-color: var(--color-surface);
+    margin-top: var(--space-10);
+  }
+  .site-footer-inner {
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-5);
+  }
+  .footer-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-6);
+    margin-bottom: var(--space-6);
+  }
+  .footer-col h4 {
+    font-size: var(--font-size-caption);
+    font-weight: var(--weight-semibold);
+    color: var(--color-text);
+    margin-bottom: var(--space-3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-col li {
+    margin-bottom: var(--space-2);
+  }
+  .footer-col a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: var(--font-size-small);
+    transition: color var(--transition-fast);
+  }
+  .footer-col a:hover,
+  .footer-col a:focus-visible {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+  .footer-meta {
+    border-top: var(--border-1);
+    padding-top: var(--space-5);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    font-size: var(--font-size-caption);
+    color: var(--color-text-muted);
+  }
+  .footer-meta p {
+    margin: 0;
+    line-height: var(--leading-snug);
+    max-width: none;
+  }
+</style>

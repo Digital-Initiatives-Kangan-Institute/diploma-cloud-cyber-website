@@ -1,0 +1,160 @@
+---
+import PublicLayout from '../../layouts/PublicLayout.astro';
+import PlaceholderImage from '../../components/PlaceholderImage.astro';
+---
+
+<PublicLayout
+  title="Our people"
+  description="The leadership, teaching, and support team at YAT College."
+>
+  <p class="breadcrumbs">
+    <a href="/about/">About</a> · Our people
+  </p>
+
+  <h1>Our people</h1>
+
+  <p class="lede">
+    YAT College is run by a single-campus team of around 60 staff, supporting
+    approximately 800 enrolled students across our six faculty areas. The
+    structure is intentionally flat — leadership, teaching, and support staff
+    all work from the Cremorne campus, which keeps decision-making close to
+    the classroom.
+  </p>
+
+  <PlaceholderImage
+    alt="Group photo of YAT College leadership and senior staff in a meeting space at the Cremorne campus. Diverse cohort across age, ethnicity, gender. Adults in business-casual dress, candid rather than posed. Natural daylight."
+    ratio="16/9"
+  />
+
+  <section class="team-section">
+    <h2>Leadership</h2>
+    <p>
+      The college is led by a Board and CEO, with directors responsible for
+      Education and Operations, and managers for Finance, ICT, and Compliance.
+      Faculty areas are each led by a Program Leader who works alongside our
+      trainers and assessors.
+    </p>
+
+    <div class="role-cards">
+      <article class="role-card">
+        <h3>Board &amp; Executive</h3>
+        <p>CEO and four directors set strategy and approve material change.</p>
+      </article>
+      <article class="role-card">
+        <h3>Senior management</h3>
+        <p>Directors of Education and Operations, Finance Manager, ICT Manager, Compliance Manager.</p>
+      </article>
+      <article class="role-card">
+        <h3>Program Leaders</h3>
+        <p>One per faculty area. Coordinate trainers, oversee delivery quality.</p>
+      </article>
+      <article class="role-card">
+        <h3>Trainers &amp; assessors</h3>
+        <p>Approximately 30 qualified teaching staff with current industry experience.</p>
+      </article>
+      <article class="role-card">
+        <h3>Administration &amp; support</h3>
+        <p>Student Services, Finance, HR, and Compliance teams — around eight staff.</p>
+      </article>
+      <article class="role-card">
+        <h3>ICT</h3>
+        <p>ICT Manager plus system administration and service desk team. Manages the on-prem environment and external technology engagements.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <h2>By the numbers</h2>
+    <div class="stat-grid">
+      <div class="stat">
+        <span class="stat-value">~60</span>
+        <span class="stat-label">Staff (FTE-equivalent)</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">~800</span>
+        <span class="stat-label">Enrolled students</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">6</span>
+        <span class="stat-label">Faculty areas</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">50+</span>
+        <span class="stat-label">Qualifications offered</span>
+      </div>
+    </div>
+  </section>
+</PublicLayout>
+
+<style>
+  .breadcrumbs {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-4);
+  }
+  .breadcrumbs a {
+    color: var(--color-text-muted);
+  }
+  .lede {
+    font-size: 1.125rem;
+    line-height: var(--leading-snug);
+    max-width: var(--content-max-width);
+    margin-bottom: var(--space-6);
+  }
+  .team-section {
+    margin: var(--space-8) 0;
+  }
+  .team-section h2 {
+    font-size: var(--font-size-h2);
+    margin-bottom: var(--space-4);
+  }
+  .role-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-5);
+  }
+  .role-card {
+    padding: var(--space-4);
+    background-color: var(--color-surface);
+    border: var(--border-1);
+    border-radius: var(--radius-md);
+  }
+  .role-card h3 {
+    font-size: var(--font-size-h3);
+    margin-bottom: var(--space-2);
+  }
+  .role-card p {
+    font-size: var(--font-size-small);
+    line-height: var(--leading-snug);
+    color: var(--color-text-muted);
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-5);
+  }
+  .stat {
+    padding: var(--space-5) var(--space-4);
+    background-color: var(--color-surface);
+    border: var(--border-1);
+    border-radius: var(--radius-md);
+    text-align: center;
+  }
+  .stat-value {
+    display: block;
+    font-size: 2.25rem;
+    font-weight: var(--weight-extrabold);
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: var(--space-1);
+  }
+  .stat-label {
+    display: block;
+    font-size: var(--font-size-caption);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+</style>

@@ -1,0 +1,95 @@
+---
+import PublicLayout from '../../layouts/PublicLayout.astro';
+import PlaceholderImage from '../../components/PlaceholderImage.astro';
+---
+
+<PublicLayout
+  title="About"
+  description="YAT College is a private Registered Training Organisation based in Cremorne, Victoria, offering over 50 certificate and diploma qualifications."
+>
+  <h1>About YAT College</h1>
+
+  <p class="lede">
+    YAT College is a private Registered Training Organisation (RTO) with a single
+    campus based in Cremorne, Victoria. We offer over 50 certificate and diploma
+    qualifications across the Vocational Education and Training (VET) sector,
+    covering business, community services, education, information technology,
+    health, and hospitality.
+  </p>
+
+  <PlaceholderImage
+    alt="Hero image — wide shot of YAT College's Cremorne campus exterior with adult students entering the main entrance. Natural daylight, warm white balance. Should show the campus as a working educational facility, not a stock library shot."
+    ratio="21/9"
+  />
+
+  <section class="pillars">
+    <article class="pillar">
+      <h2>Mission</h2>
+      <p>
+        To provide top quality education to all students and move them into
+        employment.
+      </p>
+    </article>
+
+    <article class="pillar">
+      <h2>Vision</h2>
+      <p>
+        Become one of Australia's top 5 education providers using modern
+        technologies and teaching platforms. We want to be industry leaders in
+        our systems and processes.
+      </p>
+    </article>
+  </section>
+
+  <section class="more">
+    <h2>More about us</h2>
+    <ul class="more-links">
+      <li><a href="/about/strategic-plan">Strategic plan</a> — our goals and direction</li>
+      <li><a href="/about/people">Our people</a> — the team that runs YAT</li>
+      <li><a href="/locations">Cremorne campus</a> — where we're based</li>
+    </ul>
+  </section>
+</PublicLayout>
+
+<style>
+  .lede {
+    font-size: 1.25rem;
+    line-height: var(--leading-snug);
+    color: var(--color-text);
+    max-width: var(--content-max-width);
+    margin-bottom: var(--space-6);
+  }
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-5);
+    margin: var(--space-8) 0;
+  }
+  .pillar {
+    padding: var(--space-5);
+    background-color: var(--color-surface);
+    border: var(--border-1);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-primary);
+  }
+  .pillar h2 {
+    font-size: var(--font-size-h3);
+    margin-bottom: var(--space-3);
+  }
+  .more {
+    margin-top: var(--space-8);
+  }
+  .more h2 {
+    font-size: var(--font-size-h3);
+    margin-bottom: var(--space-3);
+  }
+  .more-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .more-links li {
+    padding: var(--space-3) 0;
+    border-bottom: var(--border-1);
+  }
+</style>

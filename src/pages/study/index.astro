@@ -1,0 +1,99 @@
+---
+import PublicLayout from '../../layouts/PublicLayout.astro';
+import PlaceholderImage from '../../components/PlaceholderImage.astro';
+
+const studyAreas = [
+  { slug: 'business',                href: '/study/business',                title: 'Business',                blurb: 'Bookkeeping, business administration, marketing, leadership — practical qualifications for office and management roles.' },
+  { slug: 'community-services',      href: '/study/community-services',      title: 'Community services',     blurb: 'Aged care, disability, mental health, youth work and family support — direct pathways into the care sector.' },
+  { slug: 'education',               href: '/study/education',               title: 'Education',               blurb: 'Education support, early childhood education, and pathways into school-based assistant roles.' },
+  { slug: 'information-technology',  href: '/study/information-technology',  title: 'Information technology',  blurb: 'IT support, networking, cloud, and cyber security — qualifications that map to current industry demand.' },
+  { slug: 'health',                  href: '/study/health',                  title: 'Health',                  blurb: 'Nursing support, pathology collection, allied health assistance, and medical reception.' },
+  { slug: 'hospitality',             href: '/study/hospitality',             title: 'Hospitality',             blurb: 'Commercial cookery, patisserie, cafe operations, and hospitality management.' },
+];
+---
+
+<PublicLayout
+  title="Study areas"
+  description="Explore the six study areas at YAT College — from certificate to diploma level across business, community services, education, IT, health, and hospitality."
+>
+  <h1>Study areas</h1>
+
+  <p class="lede">
+    Over 50 certificate and diploma qualifications across six study areas,
+    all delivered from our single Cremorne campus. Most courses run full-time
+    or part-time, with start dates in February and July each year.
+  </p>
+
+  <div class="area-grid">
+    {studyAreas.map(area => (
+      <a href={area.href} class="area-card">
+        <h2>{area.title}</h2>
+        <p>{area.blurb}</p>
+        <span class="area-cta">View qualifications →</span>
+      </a>
+    ))}
+  </div>
+
+  <section class="next-step">
+    <h2>Ready to apply?</h2>
+    <p>
+      See <a href="/apply">how to enrol</a> for intake dates, fees, and the
+      application steps. Already enrolled? <a href="/sign-in">Sign in to staff and student services</a>.
+    </p>
+  </section>
+</PublicLayout>
+
+<style>
+  .lede {
+    font-size: 1.25rem;
+    line-height: var(--leading-snug);
+    max-width: var(--content-max-width);
+    margin-bottom: var(--space-6);
+  }
+  .area-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-4);
+    margin: var(--space-6) 0;
+  }
+  .area-card {
+    display: block;
+    padding: var(--space-5);
+    background-color: var(--color-surface);
+    border: var(--border-1);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--color-text);
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+  .area-card:hover, .area-card:focus-visible {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+  .area-card h2 {
+    font-size: var(--font-size-h3);
+    margin-bottom: var(--space-2);
+  }
+  .area-card p {
+    font-size: var(--font-size-small);
+    line-height: var(--leading-snug);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-3);
+  }
+  .area-cta {
+    font-size: var(--font-size-caption);
+    font-weight: var(--weight-semibold);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .next-step {
+    margin-top: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: var(--border-1);
+  }
+  .next-step h2 {
+    font-size: var(--font-size-h3);
+    margin-bottom: var(--space-3);
+  }
+</style>

@@ -1,0 +1,45 @@
+---
+/**
+ * Persistent site-wide simulated-environment disclosure.
+ * Rendered at the very top of every page in every zone (public, intranet, sign-in).
+ * Non-dismissable by design — a dismissed banner defeats the disclosure purpose,
+ * and screenshots of the site should carry it. See:
+ *   diploma-cloud-cyber/scenario/branding/brand-pack.md §5.3
+ *   diploma-cloud-cyber/scenario/website.md §6
+ */
+
+const DISCLOSURE_TEXT =
+  "This is a fictional organisation used as a case study in an educational context.";
+---
+
+<div class="disclosure-banner">
+  {DISCLOSURE_TEXT}
+</div>
+
+<style>
+  .disclosure-banner {
+    background-color: var(--banner-bg);
+    color: var(--banner-text);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-banner);
+    font-weight: var(--weight-medium);
+    letter-spacing: 0.015em;
+    text-align: center;
+    padding: var(--space-2) var(--space-4);
+    min-height: var(--banner-height);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Mirror to print so the disclosure travels with printed pages */
+  @media print {
+    .disclosure-banner {
+      background-color: var(--banner-bg) !important;
+      color: var(--banner-text) !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>

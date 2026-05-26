@@ -1,0 +1,77 @@
+---
+/**
+ * Visible image stub. Used everywhere a real image will eventually go.
+ * The `alt` prop doubles as the brief for sourcing/shooting the image later —
+ * keep it specific and concrete.
+ *
+ * Swap a real <img> for the <PlaceholderImage> when the asset arrives.
+ */
+
+interface Props {
+  alt: string;
+  ratio?: string;   // CSS aspect-ratio, e.g. "16/9", "1/1", "4/3", "3/4"
+  caption?: string;
+}
+
+const { alt, ratio = "16/9", caption } = Astro.props;
+---
+
+<figure class="placeholder-image">
+  <div class="placeholder-image-frame" style={`aspect-ratio: ${ratio}`} role="img" aria-label={alt}>
+    <div class="placeholder-image-label">
+      <span class="placeholder-tag">Image needed</span>
+      <span class="placeholder-alt">{alt}</span>
+    </div>
+  </div>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .placeholder-image {
+    margin: var(--space-5) 0;
+  }
+  .placeholder-image-frame {
+    width: 100%;
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--color-border),
+      var(--color-border) 10px,
+      var(--color-surface) 10px,
+      var(--color-surface) 20px
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-5);
+    border-radius: var(--radius-md);
+  }
+  .placeholder-image-label {
+    background-color: var(--color-surface);
+    border: var(--border-1);
+    border-radius: var(--radius-sm);
+    padding: var(--space-3) var(--space-4);
+    max-width: 80%;
+    text-align: center;
+  }
+  .placeholder-tag {
+    display: block;
+    font-size: var(--font-size-caption);
+    font-weight: var(--weight-bold);
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-1);
+  }
+  .placeholder-alt {
+    display: block;
+    font-size: var(--font-size-small);
+    color: var(--color-text);
+    line-height: var(--leading-snug);
+  }
+  figcaption {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-muted);
+    margin-top: var(--space-2);
+    text-align: center;
+  }
+</style>
