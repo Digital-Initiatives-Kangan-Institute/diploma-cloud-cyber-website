@@ -1,0 +1,202 @@
+<mxfile host="app.diagrams.net" modified="2026-05-27T00:00:00.000Z" agent="YAT scenario authoring" version="22.0.0" type="device">
+  <diagram id="postha-multiaz" name="YAT — End of AT3 (HA-hardened, multi-AZ)">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="YAT Network Topology — HA-Hardened (LMS in AWS, multi-AZ; campus services on-premises)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1820" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="internet" value="Internet" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#546E7A;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="780" y="70" width="140" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="firewall" value="Edge Firewall / Router&#xa;(redundant — no SPOF)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECEFF1;strokeColor=#546E7A;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="180" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vpn" value="VPN Server&#xa;(staff-only remote access)&#xa;SPOF" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="60" y="180" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s2svpn" value="Site-to-Site VPN&#xa;Campus ↔ AWS&#xa;LDAP back-traffic + ICT mgmt" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#6A1B9A;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="180" width="220" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_int_fw" style="endArrow=none;html=1;rounded=0;strokeColor=#546E7A;strokeWidth=2;" edge="1" parent="1" source="internet" target="firewall"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_fw_vpn" style="endArrow=none;html=1;rounded=0;strokeColor=#546E7A;" edge="1" parent="1" source="firewall" target="vpn"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_fw_s2s" style="endArrow=none;html=1;rounded=0;strokeColor=#6A1B9A;strokeWidth=2;" edge="1" parent="1" source="firewall" target="s2svpn"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="staffzone" value="Staff Network Zone (on-premises)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E0F2F1;strokeColor=#00695C;fontSize=14;fontStyle=1;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="290" width="720" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="staffsw" value="Staff Zone Switch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00695C;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="260" y="330" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e_fw_staffsw" style="endArrow=none;html=1;rounded=0;strokeColor=#546E7A;strokeWidth=2;" edge="1" parent="1" source="firewall" target="staffsw"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="dc1" value="Domain Controller 1&#xa;AD / DHCP / DNS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#00695C;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="70" y="410" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dc2" value="Domain Controller 2&#xa;AD / DHCP / DNS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#00695C;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="260" y="410" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sysmgmt" value="System Management Server&#xa;Monitoring + nightly backups" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#00695C;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="450" y="410" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="appsvc" value="Application Services Server&#xa;Accounting / Office Admin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#00695C;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="70" y="500" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nasstaff" value="NAS — Staff Zone&#xa;RAID-5, hot-swap" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#00695C;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="290" y="500" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lmsremoved" value="(LMS Server decommissioned&#xa;at cutover — now in AWS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#9E9E9E;fontSize=10;fontStyle=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="500" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="staffpc" value="Staff Desktops&#xa;~25 × Windows 10 Enterprise (AD-joined)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#00695C;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="70" y="590" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="mfp" value="Multifunction Printers&#xa;~5 staff locations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#00695C;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="410" y="590" width="290" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_sw_dc1" style="endArrow=none;html=1;rounded=0;strokeColor=#00695C;" edge="1" parent="1" source="staffsw" target="dc1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_sw_dc2" style="endArrow=none;html=1;rounded=0;strokeColor=#00695C;" edge="1" parent="1" source="staffsw" target="dc2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_sw_sysmgmt" style="endArrow=none;html=1;rounded=0;strokeColor=#00695C;" edge="1" parent="1" source="staffsw" target="sysmgmt"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_sw_appsvc" style="endArrow=none;html=1;rounded=0;strokeColor=#00695C;" edge="1" parent="1" source="staffsw" target="appsvc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_sw_nas" style="endArrow=none;html=1;rounded=0;strokeColor=#00695C;" edge="1" parent="1" source="staffsw" target="nasstaff"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_sw_pc" style="endArrow=none;html=1;rounded=0;strokeColor=#00695C;" edge="1" parent="1" source="staffsw" target="staffpc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_sw_mfp" style="endArrow=none;html=1;rounded=0;strokeColor=#00695C;" edge="1" parent="1" source="staffsw" target="mfp"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="studentzone" value="Student Network Zone (on-premises)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#F57F17;fontSize=14;fontStyle=1;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="780" y="290" width="380" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="studentsw" value="Student Zone Switch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE082;strokeColor=#F57F17;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="850" y="330" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="e_fw_studentsw" style="endArrow=none;html=1;rounded=0;strokeColor=#546E7A;strokeWidth=2;" edge="1" parent="1" source="firewall" target="studentsw"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="nasstudent" value="NAS — Student Zone&#xa;RAID-5, hot-swap" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#F57F17;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="810" y="410" width="320" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="studentpc" value="Student Desktops&#xa;~80 × Windows 10 Enterprise&#xa;+ O365 Education (AD-joined)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#F57F17;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="810" y="500" width="320" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="classprinter" value="Classroom Printers&#xa;~15 — one per classroom" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#F57F17;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="810" y="600" width="320" height="50" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_studsw_nas" style="endArrow=none;html=1;rounded=0;strokeColor=#F57F17;" edge="1" parent="1" source="studentsw" target="nasstudent"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_studsw_pc" style="endArrow=none;html=1;rounded=0;strokeColor=#F57F17;" edge="1" parent="1" source="studentsw" target="studentpc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_studsw_print" style="endArrow=none;html=1;rounded=0;strokeColor=#F57F17;" edge="1" parent="1" source="studentsw" target="classprinter"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="awsregion" value="AWS Region — ap-southeast-2 (Sydney)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontSize=14;fontStyle=1;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="290" width="680" height="850" as="geometry" />
+        </mxCell>
+
+        <mxCell id="vpc" value="VPC  10.0.0.0/16" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#0D47A1;fontSize=12;fontStyle=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="330" width="640" height="790" as="geometry" />
+        </mxCell>
+
+        <mxCell id="igw" value="Internet Gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#BF360C;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="370" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="vgw" value="VPN Gateway" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1BEE7;strokeColor=#6A1B9A;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1670" y="370" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="alb" value="Application Load Balancer (cross-AZ)&#xa;HTTPS:443" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#1565C0;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="370" width="240" height="40" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_int_igw" style="endArrow=none;html=1;rounded=0;strokeColor=#546E7A;strokeWidth=2;" edge="1" parent="1" source="internet" target="igw">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1310" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e_s2s_vgw" style="endArrow=none;html=1;rounded=0;strokeColor=#6A1B9A;strokeWidth=2;dashed=1;" edge="1" parent="1" source="s2svpn" target="vgw"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_igw_alb" style="endArrow=classic;html=1;rounded=0;strokeColor=#1565C0;" edge="1" parent="1" source="igw" target="alb"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="aza" value="Availability Zone — ap-southeast-2a" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#283593;fontSize=12;fontStyle=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="430" width="300" height="660" as="geometry" />
+        </mxCell>
+        <mxCell id="azb" value="Availability Zone — ap-southeast-2b" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#283593;fontSize=12;fontStyle=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1540" y="430" width="300" height="660" as="geometry" />
+        </mxCell>
+
+        <mxCell id="pubsuba" value="public-web-a&#xa;10.0.1.0/24" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontStyle=1;verticalAlign=top;align=left;spacingLeft=6;spacingTop=4;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="470" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="natgwa" value="NAT Gateway (AZ-a)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#F9A825;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="510" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="albnotea" value="ALB target in AZ-a" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#F9A825;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="560" width="240" height="36" as="geometry" />
+        </mxCell>
+
+        <mxCell id="pubsubb" value="public-web-b&#xa;10.0.2.0/24" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#F9A825;fontSize=11;fontStyle=1;verticalAlign=top;align=left;spacingLeft=6;spacingTop=4;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1550" y="470" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="natgwb" value="NAT Gateway (AZ-b)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#F9A825;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1570" y="510" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="albnoteb" value="ALB target in AZ-b" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#F9A825;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="1570" y="560" width="240" height="36" as="geometry" />
+        </mxCell>
+
+        <mxCell id="appsuba" value="private-app-a&#xa;10.0.11.0/24" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=11;fontStyle=1;verticalAlign=top;align=left;spacingLeft=6;spacingTop=4;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="630" width="280" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2a" value="EC2 — LMS (AZ-a)&#xa;Windows Server 2016 + DOODLE&#xa;ASG member" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#7B1FA2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="675" width="240" height="115" as="geometry" />
+        </mxCell>
+
+        <mxCell id="appsubb" value="private-app-b&#xa;10.0.12.0/24" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#7B1FA2;fontSize=11;fontStyle=1;verticalAlign=top;align=left;spacingLeft=6;spacingTop=4;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1550" y="630" width="280" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="ec2b" value="EC2 — LMS (AZ-b)&#xa;Windows Server 2016 + DOODLE&#xa;ASG member" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#7B1FA2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1570" y="675" width="240" height="115" as="geometry" />
+        </mxCell>
+
+        <mxCell id="asg_note" value="Auto Scaling Group (cross-AZ)  ·  min=2, max≥4, target-tracking on CPU" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="815" width="590" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="datasuba" value="private-data-a&#xa;10.0.21.0/24" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#C62828;fontSize=11;fontStyle=1;verticalAlign=top;align=left;spacingLeft=6;spacingTop=4;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="850" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="rdsprimary" value="RDS for MySQL — PRIMARY&#xa;Multi-AZ deployment" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#C62828;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1260" y="895" width="240" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="datasubb" value="private-data-b&#xa;10.0.22.0/24" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#C62828;fontSize=11;fontStyle=1;verticalAlign=top;align=left;spacingLeft=6;spacingTop=4;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1550" y="850" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="rdsstandby" value="RDS for MySQL — STANDBY&#xa;Synchronous replication&#xa;Auto-failover &lt; 2 min" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#C62828;fontSize=11;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="1570" y="895" width="240" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e_rds_replication" value="synchronous replication" style="endArrow=classic;startArrow=classic;html=1;rounded=0;strokeColor=#C62828;strokeWidth=2;fontSize=10;fontStyle=2;" edge="1" parent="1" source="rdsprimary" target="rdsstandby"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="e_alb_ec2a" style="endArrow=classic;html=1;rounded=0;strokeColor=#7B1FA2;" edge="1" parent="1" source="alb" target="ec2a"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_alb_ec2b" style="endArrow=classic;html=1;rounded=0;strokeColor=#7B1FA2;" edge="1" parent="1" source="alb" target="ec2b"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_ec2a_rds" style="endArrow=classic;html=1;rounded=0;strokeColor=#C62828;" edge="1" parent="1" source="ec2a" target="rdsprimary"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_ec2b_rds" style="endArrow=classic;html=1;rounded=0;strokeColor=#C62828;" edge="1" parent="1" source="ec2b" target="rdsprimary"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="s3backup" value="S3 — Cross-Region backup copy&#xa;(ap-southeast-2 → ap-southeast-4)&#xa;automated daily" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF59D;strokeColor=#F9A825;fontSize=10;fontStyle=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="1000" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e_rds_s3" style="endArrow=classic;html=1;rounded=0;strokeColor=#F9A825;dashed=1;" edge="1" parent="1" source="rdsprimary" target="s3backup"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="e_natgwa_ec2a" style="endArrow=classic;html=1;rounded=0;strokeColor=#F9A825;dashed=1;" edge="1" parent="1" source="ec2a" target="natgwa"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e_natgwb_ec2b" style="endArrow=classic;html=1;rounded=0;strokeColor=#F9A825;dashed=1;" edge="1" parent="1" source="ec2b" target="natgwb"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="legend" value="Legend — HA hardening summary&#xa;━━━ On-prem network plumbing&#xa;━━━ Site-to-Site VPN (LDAP + ICT mgmt)&#xa;Cross-AZ ALB → ASG (min=2) → Multi-AZ RDS with synchronous replication and automatic failover&#xa;Per-AZ NAT Gateways · Cross-Region S3 backup copy · Independent failure domains per AZ" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#BDBDBD;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="640" height="120" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

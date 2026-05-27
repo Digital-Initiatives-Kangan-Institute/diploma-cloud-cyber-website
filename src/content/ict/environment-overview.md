@@ -3,6 +3,8 @@ title: 'ICT Environment Overview'
 description: 'Current state of YAT ICT — network, services, applications, storage, security, and facilities.'
 appearsIn:
   - s1-cl1-at1
+  - s1-cl1-at2
+  - s1-cl1-at3
 order: 2
 uocReferences:
   - '[ICTICT517 AC 5] Information on current ICT systems and practices in the organisation including operating systems, hardware, and security'

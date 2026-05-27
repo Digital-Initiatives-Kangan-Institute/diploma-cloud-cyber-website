@@ -5,7 +5,7 @@ appearsIn:
   - s1-cl1-at1
   - s1-cl1-at2
   - s1-cl1-at3
-order: 4
+order: 11
 yearOffset: 0
 uocReferences:
   - '[ICTICT517 PC 3.1] Develop action plan to implement proposed changes including prioritised schedule and consistency with organisational policy and procedures'
