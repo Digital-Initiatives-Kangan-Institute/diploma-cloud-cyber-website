@@ -1,12 +1,9 @@
 ---
-title: 'LMS Server Specifications and Current Status'
-description: 'Current-state record of the YAT on-prem LMS server — hardware specifications, measured availability, utilisation, and growth profile relevant to ICT planning.'
+title: 'LMS Server Specifications'
+description: 'Specifications of the YAT on-prem LMS server — hardware, operating system, measured availability, utilisation, and growth profile relevant to ICT planning.'
 appearsIn:
   - s1-cl1-at1
   - s1-cl1-at2
-  - s1-cl1-at3
-  - s1-cl2-at1
-  - s1-cl3-at1
 order: 10
 uocReferences:
   - '[ICTICT517 AC 5] Information on current ICT systems and practices in the organisation including operating systems, hardware, and security'
@@ -17,7 +14,7 @@ uocReferences:
 
 | | |
 |---|---|
-| Document title | LMS Server Specifications and Current Status |
+| Document title | LMS Server Specifications |
 | Document owner | Sam Walker, ICT Manager |
 | Prepared by | YAT ICT |
 | Review cycle | Annual, or on material change to the LMS server or its operating profile |
@@ -25,7 +22,7 @@ uocReferences:
 
 ## 1. Purpose
 
-This document records the current specifications and operating status of the YAT on-premises Learning Management System (LMS) server. It is the authoritative record for the LMS asset and is the planning input for any work that touches the LMS — capacity, availability, recoverability, or migration.
+This document records the current specifications of the YAT on-premises Learning Management System (LMS) server — hardware, operating system, and operating profile. It is the authoritative record for the LMS asset and is the planning input for any work that touches the LMS — capacity, availability, recoverability, or migration.
 
 ## 2. LMS description
 

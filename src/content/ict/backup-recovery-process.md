@@ -4,9 +4,6 @@ description: 'Current-state backup process and worst-case recovery steps for the
 appearsIn:
   - s1-cl1-at1
   - s1-cl1-at2
-  - s1-cl1-at3
-  - s1-cl2-at1
-  - s1-cl3-at1
 order: 8
 uocReferences:
   - '[ICTCLD502 PC 2.3] Estimate recovery objectives for multi-tier web components and for overall architecture'
