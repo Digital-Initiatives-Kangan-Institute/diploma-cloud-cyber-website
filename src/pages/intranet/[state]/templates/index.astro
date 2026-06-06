@@ -18,6 +18,14 @@ export function getStaticPaths() {
 const { state } = Astro.props;
 const base = `/intranet/${state.slug}`;
 
+// The Solution Design template has a web-scale variant (it adds Web-scale Design and
+// Microservice & Serverless Design sections) for clusters whose design work scales a web
+// application and includes a microservice — currently S1-CL2. Other clusters get the base
+// template, whose shape is unchanged. Same on-page label either way.
+const solutionDesignHref = state.slug.startsWith('s1-cl2')
+  ? '/templates/YAT-Solution-Design-Template-Webscale.docx'
+  : '/templates/YAT-Solution-Design-Template.docx';
+
 // Available templates (static files under /public/templates/). Add entries here
 // as further templates are finalised.
 const templates = [
@@ -39,7 +47,7 @@ const templates = [
     title: 'Solution Design',
     description:
       'The YAT solution/architecture design template — for a greenfield design or for hardening an existing one. The design a deployment report then implements. Complete the sections that apply; mark the rest “Not applicable”.',
-    href: '/templates/YAT-Solution-Design-Template.docx',
+    href: solutionDesignHref,
     format: 'DOCX',
   },
   {
