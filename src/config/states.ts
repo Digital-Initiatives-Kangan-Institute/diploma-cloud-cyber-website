@@ -51,8 +51,8 @@ export const STATES: State[] = [
     slug: 's1-cl2-at1',
     semesterNumber: 1, semesterLabel: 'Semester 1',
     clusterCode: 'CL2', clusterNumber: 2, clusterLabel: 'Cloud Disaster Recovery',
-    atNumber: 1, atLabel: 'TBD',
-    fullLabel: 'Semester 1, Cluster 2 — Cloud Disaster Recovery, Assessment Task 1: TBD',
+    atNumber: 1, atLabel: 'Disaster Recovery Plan',
+    fullLabel: 'Semester 1, Cluster 2 — Cloud Disaster Recovery, Assessment Task 1: Disaster Recovery Plan',
   },
   {
     slug: 's1-cl3-at1',

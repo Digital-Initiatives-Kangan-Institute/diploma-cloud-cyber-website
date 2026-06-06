@@ -7,7 +7,7 @@
 
 import IntranetLayout from '../../../../layouts/IntranetLayout.astro';
 import { STATES } from '../../../../config/states';
-import { getProjectsForState } from '../../../../config/projects';
+import { getProjectsForState, getProjectStatus, getProjectTimeline } from '../../../../config/projects';
 
 export function getStaticPaths() {
   return STATES.map(s => ({
@@ -19,8 +19,8 @@ export function getStaticPaths() {
 const { state } = Astro.props;
 const base = `/intranet/${state.slug}`;
 const all = getProjectsForState(state.slug);
-const current = all.filter(p => p.status === 'current');
-const past = all.filter(p => p.status === 'completed');
+const current = all.filter(p => getProjectStatus(p, state.slug) === 'current');
+const past = all.filter(p => getProjectStatus(p, state.slug) === 'completed');
 ---
 
 <IntranetLayout
@@ -51,7 +51,7 @@ const past = all.filter(p => p.status === 'completed');
                 <h3>{p.displayName}</h3>
                 <span class="status-badge status-current">Current</span>
               </div>
-              <p class="project-timeline">{p.timeline}</p>
+              <p class="project-timeline">{getProjectTimeline(p, state.slug)}</p>
               <p class="project-summary">{p.summary}</p>
             </a>
           </li>
@@ -73,7 +73,7 @@ const past = all.filter(p => p.status === 'completed');
                 <h3>{p.displayName}</h3>
                 <span class="status-badge status-completed">Completed</span>
               </div>
-              <p class="project-timeline">{p.timeline}</p>
+              <p class="project-timeline">{getProjectTimeline(p, state.slug)}</p>
               <p class="project-summary">{p.summary}</p>
             </a>
           </li>

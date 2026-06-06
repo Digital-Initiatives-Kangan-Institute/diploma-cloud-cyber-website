@@ -8,7 +8,7 @@
 import IntranetLayout from '../../../../../layouts/IntranetLayout.astro';
 import { getCollection } from 'astro:content';
 import { STATES } from '../../../../../config/states';
-import { PROJECTS } from '../../../../../config/projects';
+import { PROJECTS, getProjectStatus, getProjectTimeline } from '../../../../../config/projects';
 
 export function getStaticPaths() {
   const paths: Array<{
@@ -31,7 +31,9 @@ export function getStaticPaths() {
 
 const { state, project } = Astro.props;
 const base = `/intranet/${state.slug}`;
-const statusLabel = project.status === 'current' ? 'Current' : 'Completed';
+const status = getProjectStatus(project, state.slug);
+const timeline = getProjectTimeline(project, state.slug);
+const statusLabel = status === 'current' ? 'Current' : 'Completed';
 
 // Fetch project documents in this state for this project, sorted by
 // frontmatter `order` (lower first; ties broken by title; documents
@@ -61,7 +63,7 @@ const docs = allDocs
 
 <IntranetLayout
   title={project.displayName}
-  description={`${project.displayName} — ${project.timeline}.`}
+  description={`${project.displayName} — ${timeline}.`}
   breadcrumb={[
     { text: 'Intranet', href: `${base}/` },
     { text: 'Projects', href: `${base}/projects/` },
@@ -78,11 +80,11 @@ const docs = allDocs
 
       <dt>Status</dt>
       <dd>
-        <span class:list={['status-badge', `status-${project.status}`]}>{statusLabel}</span>
+        <span class:list={['status-badge', `status-${status}`]}>{statusLabel}</span>
       </dd>
 
       <dt>Timeline</dt>
-      <dd>{project.timeline}</dd>
+      <dd>{timeline}</dd>
     </dl>
   </div>
 
