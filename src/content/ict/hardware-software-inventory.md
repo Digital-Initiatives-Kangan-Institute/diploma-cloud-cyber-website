@@ -1,6 +1,6 @@
 ---
 title: 'Hardware / Software Inventory'
-description: 'Current-state inventory of YAT servers, storage, endpoints, network equipment, and software licensing across the Cremorne campus.'
+description: 'Current-state inventory of YAT servers, storage, endpoints, network equipment, software licensing across the Cremorne campus, and the AWS-hosted website.'
 appearsIn:
   - s1-cl1-at1
   - s1-cl1-at2
@@ -22,7 +22,7 @@ uocReferences:
 
 ## 1. Purpose
 
-This inventory records YAT's current ICT assets — servers, storage, endpoints, network equipment, and software licensing — at the Cremorne campus. It supports ICT planning, audit, change-management impact assessment, and the engagement of external consultants where their work touches the YAT environment.
+This inventory records YAT's current ICT assets — servers, storage, endpoints, network equipment, and software licensing at the Cremorne campus, plus the AWS-hosted website. It supports ICT planning, audit, change-management impact assessment, and the engagement of external consultants where their work touches the YAT environment.
 
 ## 2. Server inventory
 
@@ -41,7 +41,19 @@ This inventory records YAT's current ICT assets — servers, storage, endpoints,
 | NAS — staff zone | 1 | Staff | RAID-5, hot-swap disks |
 | NAS — student zone | 1 | Student | RAID-5, hot-swap disks |
 
-## 4. Endpoint inventory
+## 4. AWS resources — Website
+
+YAT's public website runs in AWS region `ap-southeast-2` (Sydney) as a single-Availability-Zone deployment, migrated from on-premises hosting in 2023 (YAT's first cloud system). The following resources comprise the website environment:
+
+| Resource | Tier / Subnet | Configuration | Notes |
+|---|---|---|---|
+| VPC (Website) | n/a | Separate website VPC | Single-AZ; independent of the LMS environment |
+| Internet Gateway (Website) | VPC edge | AWS-managed | Public inbound to the website over HTTPS |
+| EC2 — Website | `public-web-a` | LAMP stack + CMS; single instance with an Elastic IP | The website; single point of failure |
+| Amazon RDS for MySQL — Website | `private-data-a` | Single-AZ; KMS-encrypted; 7-day automated backup retention | Website CMS database; single point of failure |
+| Amazon S3 — Website backups | n/a (regional) | Versioned; private | Nightly database and media backups |
+
+## 5. Endpoint inventory
 
 | Endpoint | Approximate quantity | OS / Edition | Notes |
 |---|---:|---|---|
@@ -50,7 +62,7 @@ This inventory records YAT's current ICT assets — servers, storage, endpoints,
 | Multifunction printers | ~5 | n/a | Designated staff locations |
 | Classroom printers | ~15 | n/a | One per classroom |
 
-## 5. Network equipment
+## 6. Network equipment
 
 | Item | Quantity | Notes |
 |---|---:|---|
@@ -59,7 +71,7 @@ This inventory records YAT's current ICT assets — servers, storage, endpoints,
 | LAN distribution switches — Student zone | (per zone topology) | Connect student desktops, classroom printers, Student-zone NAS |
 | Wireless access points | (campus-wide coverage) | Staff and student wifi served on separated SSIDs |
 
-## 6. Software and licensing inventory
+## 7. Software and licensing inventory
 
 | Product | Vendor | Licence type | Quantity / coverage |
 |---|---|---|---|
@@ -70,17 +82,21 @@ This inventory records YAT's current ICT assets — servers, storage, endpoints,
 | Office 365 (Email, staff and students) | Microsoft | Mailbox-licensed SaaS, Azure-hosted | Staff and student mailboxes |
 | DOODLE (Diverse Object-Orientated Dynamic Learning Environment) | Open source — GNU GPL | Free / no licence cost | 1 deployment |
 | MySQL Community Edition | Oracle | Open source — GPL | 1 deployment |
+| PHP-based CMS (website) | Open source | Open source (GPL-family) | 1 deployment (AWS-hosted) |
+| MySQL (via Amazon RDS — website) | AWS managed | RDS pricing | Website CMS database |
 
-## 7. Facilities
+## 8. Facilities
 
 | Item | Notes |
 |---|---|
 | Server room | Physically secured, air-conditioned, UPS-protected against power loss and electrical surges |
 | Network plumbing | Redundant at the edge — no single point of failure at the network layer |
+| AWS region `ap-southeast-2` | AWS-managed under the Shared Responsibility Model (security of the regions, AZs, hardware, hypervisor) — hosts the website |
 
-## 8. References
+## 9. References
 
 - On-Premises Network Diagram — zone layout and topology
 - ICT Environment Overview — narrative description of the current environment
 - LMS Server Specifications and Current Status — detailed record of the LMS server
+- Website Cloud Architecture — Baseline Design — design of the AWS-hosted website (2023)
 - User Access Policy (intranet policies) — authoritative source for role-based access matrix

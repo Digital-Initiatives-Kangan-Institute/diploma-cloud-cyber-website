@@ -1,6 +1,6 @@
 ---
 title: 'ICT Environment Overview'
-description: 'Current state of YAT ICT — network, services, applications, storage, security, and facilities.'
+description: 'Current state of YAT ICT — network, services, applications, the AWS-hosted website, storage, security, and facilities.'
 appearsIn:
   - s1-cl1-at1
   - s1-cl1-at2
@@ -21,7 +21,7 @@ uocReferences:
 | Review cycle | On any material change to the ICT environment; annual review otherwise |
 | Classification | Internal — ICT, Finance, Education leadership, and engaged consultants on signed MSA |
 
-This document describes the current state of YAT's ICT environment at the Cremorne campus, covering network, network services, application services, storage, end-user computing, security, facilities, and ICT staff capability.
+This document describes the current state of YAT's ICT environment at the Cremorne campus, covering network, network services, application services, the AWS-hosted website, storage, end-user computing, security, facilities, and ICT staff capability.
 
 ## Network
 
@@ -42,6 +42,12 @@ Accounting and office administration services are provided on a single Windows S
 ## LMS
 
 The LMS runs on Windows Server 2016 and uses a MySQL database. It is installed on a single local server which is at the end of its lifetime. System performance of this mission-critical system is expected to degrade noticeably if the load increases.
+
+## Website
+
+The YAT public website — marketing site, course catalogue, and online enquiry / application intake — runs in AWS region `ap-southeast-2` (Sydney). It was YAT's first cloud system, migrated from on-premises hosting in 2023. The website's PHP/MySQL content management system runs on a single EC2 instance (LAMP stack), backed by a single-AZ Amazon RDS for MySQL database, with nightly backups to Amazon S3.
+
+The website is a deliberately simple, single-Availability-Zone deployment: there is no load balancer, no autoscaling, no Multi-AZ database, and no disaster-recovery tier. The single instance, single availability zone, and single database are known single points of failure, accepted when the pilot was delivered and not since addressed. The public reaches the website over the Internet via HTTPS; enquiry and application submissions email the Admissions team and feed the student-administration intake process.
 
 ## Email
 
@@ -74,6 +80,7 @@ ICT staff are highly skilled in their area of expertise and have excellent subje
 ## Related references
 
 - LMS Application Specification — current technical specification of the LMS application
+- Website Cloud Architecture — Baseline Design — the design under which the AWS-hosted website was built (2023)
 - ICT Operational Costing — LMS — operational cost data for the LMS
 - ICT Strategic Plan — five-year direction including the cloud migration objective
 - User Access Policy (intranet policies) — role-based access and zone separation

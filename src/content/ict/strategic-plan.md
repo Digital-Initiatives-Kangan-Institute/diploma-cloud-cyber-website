@@ -38,7 +38,7 @@ uocReferences:
 
 ## Planned ICT Initiatives
 
-To further improve the agility of ICT operations, YAT College plans to utilise the Infrastructure as a Service (IaaS) and Software as a Service (SaaS) models and gradually move suitable on-site systems to the cloud. The LMS has been identified as the first system to be transitioned.
+To further improve the agility of ICT operations, YAT College plans to utilise the Infrastructure as a Service (IaaS) and Software as a Service (SaaS) models and gradually move suitable on-site systems to the cloud. The **public website was migrated to AWS in 2023** as a deliberately low-risk first cloud pilot, which proved the delivery model on a non-critical system. The LMS has been identified as the first **mission-critical** system to be transitioned.
 
 ## Alignment with YAT business objectives
 
@@ -54,5 +54,6 @@ The transition of critical application services to cloud-hosted infrastructure i
 
 - ICT Operational Costing — LMS (current year and prior years) — cost grounding for any operating-model change decision
 - LMS Application Specification — current technical specification of the LMS application
+- Website Cloud Architecture — Baseline Design — the 2023 website cloud pilot referenced above
 - Change Management Procedure (intranet policies) — governance for material ICT changes
 - Privacy / Data Handling Policy (intranet policies) — data-residency and cross-border-transfer constraints on cloud-hosted services

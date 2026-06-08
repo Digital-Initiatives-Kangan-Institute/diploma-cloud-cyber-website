@@ -1,6 +1,6 @@
 ---
 title: 'ICT Environment Overview'
-description: 'Current state of YAT ICT — campus network, services, applications, AWS-hosted LMS, storage, security, and facilities.'
+description: 'Current state of YAT ICT — campus network, services, applications, AWS-hosted LMS and website, storage, security, and facilities.'
 appearsIn:
   - s1-cl1-at3
 order: 2
@@ -20,7 +20,7 @@ uocReferences:
 | Review cycle | On any material change to the ICT environment; annual review otherwise |
 | Classification | Internal — ICT, Finance, Education leadership, and engaged consultants on signed MSA |
 
-This document describes the current state of YAT's ICT environment, covering campus network, network services, application services, the AWS-hosted LMS, storage, end-user computing, security, facilities, and ICT staff capability.
+This document describes the current state of YAT's ICT environment, covering campus network, network services, application services, the AWS-hosted LMS and website, storage, end-user computing, security, facilities, and ICT staff capability.
 
 ## Network
 
@@ -45,6 +45,12 @@ Accounting and office administration services are provided on a single Windows S
 The LMS runs in AWS region `ap-southeast-2` (Sydney) as a multi-tier web workload. The DOODLE LMS application is deployed on Windows Server 2016 EC2 instances managed by an Auto Scaling Group, fronted by an Application Load Balancer in a public subnet. The DOODLE LMS database runs on Amazon RDS for MySQL. The LMS is reached over the Internet by staff and student end users, and over the Site-to-Site VPN for back-office traffic (AD-LDAP authentication, ICT management).
 
 The cloud-hosted LMS environment is currently deployed as a single-AZ baseline. Single-AZ deployment is acceptable as an interim operating state but does not meet YAT's 99.9% availability target on its own; the high-availability hardening of this environment (Multi-AZ database, cross-AZ application capacity) is the next planned activity for this engagement.
+
+## Website
+
+The YAT public website — marketing site, course catalogue, and online enquiry / application intake — runs in AWS region `ap-southeast-2` (Sydney). It was YAT's first cloud system, migrated from on-premises hosting in 2023. The website's PHP/MySQL content management system runs on a single EC2 instance (LAMP stack), backed by a single-AZ Amazon RDS for MySQL database, with nightly backups to Amazon S3.
+
+The website is a deliberately simple, single-Availability-Zone deployment: there is no load balancer, no autoscaling, no Multi-AZ database, and no disaster-recovery tier. The single instance, single availability zone, and single database are known single points of failure, accepted when the pilot was delivered and not since addressed. The public reaches the website over the Internet via HTTPS; enquiry and application submissions email the Admissions team and feed the student-administration intake process.
 
 ## Email
 
@@ -80,6 +86,7 @@ ICT staff are highly skilled in their area of expertise and have excellent subje
 
 - LMS Application Specification — current technical specification of the LMS application
 - LMS Cloud Architecture — Baseline Design — the design under which the AWS LMS environment was built
+- Website Cloud Architecture — Baseline Design — the design under which the AWS-hosted website was built (2023)
 - High-Availability Database Requirements — requirements driving the next hardening phase
 - ICT Operational Costing — LMS — operational cost data for the LMS
 - ICT Strategic Plan — five-year direction including the cloud migration objective

@@ -22,7 +22,7 @@ uocReferences:
 
 ## 1. Purpose
 
-This inventory records YAT's current ICT assets — campus servers, storage, endpoints, network equipment, software licensing, and the AWS-hosted LMS resources. It supports ICT planning, audit, change-management impact assessment, and the engagement of external consultants where their work touches the YAT environment.
+This inventory records YAT's current ICT assets — campus servers, storage, endpoints, network equipment, software licensing, and the AWS-hosted LMS and website resources. It supports ICT planning, audit, change-management impact assessment, and the engagement of external consultants where their work touches the YAT environment.
 
 ## 2. Campus server inventory
 
@@ -40,7 +40,9 @@ This inventory records YAT's current ICT assets — campus servers, storage, end
 | NAS — staff zone | 1 | Staff | RAID-5, hot-swap disks |
 | NAS — student zone | 1 | Student | RAID-5, hot-swap disks |
 
-## 4. AWS resources — LMS environment
+## 4. AWS resources
+
+### 4.1 LMS environment
 
 The LMS workload is deployed in AWS region `ap-southeast-2` (Sydney) across two availability zones (`ap-southeast-2a` and `ap-southeast-2b`) for resilience to single-AZ failure. The following resources comprise the LMS environment:
 
@@ -57,6 +59,18 @@ The LMS workload is deployed in AWS region `ap-southeast-2` (Sydney) across two 
 | Amazon S3 — LMS attachments | n/a (regional) | Versioned; lifecycle to Glacier Deep Archive after 24 months; cross-Region backup copy | Course materials, student submissions |
 | Amazon S3 — LMS backups | n/a (regional) | Versioned; private; access-logged; cross-Region backup copy | Off-instance backup copies |
 | CloudWatch Logs | n/a | 90-day retention | VPC flow logs, ALB access logs, EC2 OS logs, RDS logs |
+
+### 4.2 Website (separate 2023 pilot, not HA-hardened)
+
+YAT's public website runs in the same AWS Sydney region as a separate single-Availability-Zone deployment. Unlike the LMS, it has **not** been HA-hardened — it remains the 2023 single-AZ pilot:
+
+| Resource | Tier / Subnet | Configuration | Notes |
+|---|---|---|---|
+| VPC (Website) | n/a | Separate website VPC | Single-AZ; independent of the LMS environment |
+| Internet Gateway (Website) | VPC edge | AWS-managed | Public inbound to the website over HTTPS |
+| EC2 — Website | `public-web-a` | LAMP stack + CMS; single instance with an Elastic IP | The website; single point of failure |
+| Amazon RDS for MySQL — Website | `private-data-a` | Single-AZ; KMS-encrypted | Website CMS database; single point of failure |
+| Amazon S3 — Website backups | n/a (regional) | Versioned; private; no cross-Region copy | Nightly database and media backups |
 
 ## 5. Endpoint inventory
 
@@ -89,6 +103,8 @@ The LMS workload is deployed in AWS region `ap-southeast-2` (Sydney) across two 
 | Office 365 (Email, staff and students) | Microsoft | Mailbox-licensed SaaS, Azure-hosted | Staff and student mailboxes |
 | DOODLE (Diverse Object-Orientated Dynamic Learning Environment) | Open source — GNU GPL | Free / no licence cost | 1 deployment (AWS-hosted, Multi-AZ) |
 | MySQL (via Amazon RDS) | AWS managed | RDS Multi-AZ pricing | LMS database |
+| PHP-based CMS (website) | Open source | Open source (GPL-family) | 1 deployment (AWS-hosted) |
+| MySQL (via Amazon RDS — website) | AWS managed | RDS pricing (single-AZ) | Website CMS database |
 
 ## 8. Facilities
 
@@ -103,6 +119,7 @@ The LMS workload is deployed in AWS region `ap-southeast-2` (Sydney) across two 
 - Network Diagram — zone layout, topology, and Multi-AZ AWS-hosted LMS environment
 - ICT Environment Overview — narrative description of the current environment
 - LMS Cloud Architecture — Baseline Design — design of the AWS LMS environment
+- Website Cloud Architecture — Baseline Design — design of the AWS-hosted website (2023)
 - High-Availability Database Requirements — HA requirements the LMS database deployment was hardened to
 - LMS Server Specifications and Current Status — record of the LMS workload
 - User Access Policy (intranet policies) — authoritative source for role-based access matrix

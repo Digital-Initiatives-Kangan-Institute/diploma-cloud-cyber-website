@@ -144,8 +144,33 @@
         <mxCell id="e_natgw_ec2" style="endArrow=classic;html=1;rounded=0;strokeColor=#F9A825;dashed=1;" edge="1" parent="1" source="ec2lms" target="natgw"><mxGeometry relative="1" as="geometry" /></mxCell>
         <mxCell id="e_vgw_ec2" style="endArrow=classic;html=1;rounded=0;strokeColor=#6A1B9A;dashed=1;" edge="1" parent="1" source="ec2lms" target="vgw"><mxGeometry relative="1" as="geometry" /></mxCell>
 
-        <mxCell id="legend" value="Legend&#xa;━━━ On-prem network plumbing&#xa;━━━ Site-to-Site VPN (LDAP back-traffic, ICT mgmt)&#xa;┄┄┄ Outbound / management flows (NAT, AD-LDAP, ICT)&#xa;Dashed boxes: AWS subnets (single-AZ — HA hardening pending)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#BDBDBD;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=8;" vertex="1" parent="1">
-          <mxGeometry x="40" y="60" width="500" height="100" as="geometry" />
+        <mxCell id="legend" value="Legend&#xa;━━━ On-prem network plumbing&#xa;━━━ Site-to-Site VPN (LDAP back-traffic, ICT mgmt)&#xa;┄┄┄ Outbound / management flows (NAT, AD-LDAP, ICT)&#xa;Dashed boxes: AWS subnets (single-AZ — HA hardening pending)&#xa;▭ Orange box: AWS-hosted website (separate 2023 single-AZ pilot)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#BDBDBD;fontSize=11;align=left;verticalAlign=top;spacingLeft=10;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="500" height="120" as="geometry" />
+        </mxCell>
+
+        <mxCell id="aws_web_region" value="AWS — ap-southeast-2 (Sydney) · Website VPC — single-AZ (2023 pilot, separate from the LMS environment)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#EF6C00;dashed=1;fontSize=12;fontStyle=1;verticalAlign=top;align=left;spacingLeft=12;spacingTop=8;" vertex="1" parent="1">
+          <mxGeometry x="1190" y="56" width="470" height="196" as="geometry" />
+        </mxCell>
+        <mxCell id="ws_ec2" value="EC2 — Website&#xa;LAMP / CMS&#xa;single instance · SPOF" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#EF6C00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="100" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ws_rds" value="RDS for MySQL&#xa;single-AZ · SPOF" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#EF6C00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="100" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ws_s3" value="S3 — nightly backups" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFE0B2;strokeColor=#EF6C00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1210" y="178" width="200" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="ws_note" value="No load balancer&#xa;No Multi-AZ · No DR" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#BDBDBD;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="1440" y="178" width="200" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="e_int_web" value="Public HTTPS (visitors)" style="endArrow=open;html=1;rounded=0;strokeColor=#EF6C00;strokeWidth=2;fontSize=10;fontStyle=2;" edge="1" parent="1" source="internet" target="ws_ec2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_web_rds" value="MySQL" style="endArrow=none;html=1;rounded=0;strokeColor=#EF6C00;fontSize=10;" edge="1" parent="1" source="ws_ec2" target="ws_rds">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_web_s3" value="nightly backup" style="endArrow=open;html=1;rounded=0;dashed=1;strokeColor=#EF6C00;fontSize=10;fontStyle=2;" edge="1" parent="1" source="ws_ec2" target="ws_s3">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
       </root>

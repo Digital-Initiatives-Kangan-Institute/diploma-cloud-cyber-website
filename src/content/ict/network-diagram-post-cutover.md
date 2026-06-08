@@ -43,6 +43,8 @@ The LMS now runs in **AWS region `ap-southeast-2` (Sydney)** as a multi-tier web
 
 End-user LMS access from YAT staff and student desktops flows over the campus internet connection to the AWS Application Load Balancer. The Site-to-Site VPN is reserved for back-office traffic (LDAP, management).
 
+Separately from the LMS, YAT's **public website** runs in the same AWS Sydney region as an **independent single-Availability-Zone deployment** — a single EC2 instance (LAMP / CMS), a single-AZ Amazon RDS for MySQL database, and S3 for nightly backups. Migrated from on-premises hosting in 2023 as YAT's first cloud project, it is reached by the public over the Internet via HTTPS and is not connected to the campus network. It has no load balancer, autoscaling, Multi-AZ, or disaster recovery — its single instance, availability zone, and database are single points of failure.
+
 ## 3. Component summary
 
 ### 3.1 On-premises components
@@ -73,6 +75,16 @@ End-user LMS access from YAT staff and student desktops flows over the campus in
 | EC2 — LMS application | `private-app-a` (10.0.11.0/24) | Single-AZ ASG (min=1, max=2) | Windows Server 2016 + DOODLE |
 | RDS for MySQL | `private-data-a` (10.0.21.0/24) | Single-AZ baseline — not HA | Failover via point-in-time restore only at baseline |
 
+### 3.3 AWS components (Website — separate 2023 pilot)
+
+| Component | Subnet / Tier | Redundancy | Notes |
+|---|---|---|---|
+| EC2 — Website | `public-web-a` (single-AZ) | Single — SPOF | LAMP / CMS; serves the public website |
+| RDS for MySQL — Website | `private-data-a` (single-AZ) | Single — SPOF | Website CMS database; no standby |
+| S3 — website backups | n/a (regional) | Single region | Nightly database and media backups |
+
+This is a separate deployment from the LMS environment above — its own single-AZ footprint, migrated in 2023, not HA-hardened.
+
 ## 4. Single points of failure
 
 The current topology has a different SPOF profile from the prior all-on-premises arrangement:
@@ -90,10 +102,12 @@ The current topology has a different SPOF profile from the prior all-on-premises
 - **VPN server (campus, staff remote access)** — unchanged from prior topology; outside the LMS migration scope.
 - **Application Services server** (Accounting / office admin) — unchanged from prior topology.
 - **System Management server** — unchanged from prior topology.
+- **Website (AWS, Sydney)** — the separate 2023 website pilot is single-AZ: its single EC2 instance, Availability Zone, and RDS database are each single points of failure, with no DR. Outside the LMS migration scope.
 
 ## 5. References
 
 - LMS Cloud Architecture — Baseline Design — the design under which this topology was built
+- Website Cloud Architecture — Baseline Design — the design under which the AWS-hosted website was built (2023)
 - ICT Environment Overview — narrative description of the wider YAT environment
 - Hardware / Software Inventory — itemised inventory by role and zone
 - High-Availability Database Requirements — the requirements the next hardening phase works to

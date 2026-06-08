@@ -35,6 +35,8 @@ The campus network is logically segmented into two zones — a **Staff network z
 
 All servers reside in the Staff zone. The Student zone holds student desktops, classroom printers, and the Student-zone NAS. The LMS server is reachable from the Student zone via permissioned access controlled by Active Directory.
 
+Separately from the campus network, YAT's **public website** runs in **AWS region `ap-southeast-2` (Sydney)** as a single-Availability-Zone deployment — a single EC2 instance (LAMP / CMS), a single-AZ Amazon RDS for MySQL database, and S3 for nightly backups. Migrated from on-premises hosting in 2023 as YAT's first cloud project, it is reached by the public over the Internet via HTTPS and is not connected to the campus network. It has no load balancer, autoscaling, Multi-AZ, or disaster recovery — its single instance, availability zone, and database are single points of failure.
+
 ## 3. Component summary
 
 | Component | Zone | Redundancy | Notes |
@@ -51,6 +53,7 @@ All servers reside in the Staff zone. The Student zone holds student desktops, c
 | Student desktops | Student | n/a | Windows 10 Enterprise + Office 365 Education |
 | Multifunction printers | Staff | n/a | Designated staff locations |
 | Classroom printers | Student | n/a | One per classroom |
+| **Website (AWS Sydney)** | **Off-campus — AWS** | **Single-AZ — SPOF** | **Public site / CMS migrated to AWS in 2023; single EC2 + single-AZ RDS + S3 backups; no HA or DR** |
 
 ## 4. Single points of failure
 
@@ -60,10 +63,12 @@ The following single-instance components have been identified and recorded for r
 - **VPN server** — single instance carrying all staff remote access. Not in scope for the LMS migration; flagged for separate consideration in a future ICT planning cycle.
 - **Application Services server** (Accounting / office admin) — single instance. Partially mitigated by outsourcing the most critical functions (e.g. payroll).
 - **System Management server** — single instance. Explicitly designated as not requiring high availability; restored from build records and tape in the event of failure.
+- **Website (AWS, Sydney)** — the single EC2 instance, single Availability Zone, and single RDS database of the 2023 website pilot are each single points of failure. Accepted when the pilot was delivered; not since hardened. No disaster-recovery tier.
 
 ## 5. References
 
 - ICT Environment Overview — narrative description of the current on-prem environment
 - Hardware / Software Inventory — itemised inventory by role and zone
 - LMS Server Specifications and Current Status — detailed record of the LMS server (the SPOF flagged above)
+- Website Cloud Architecture — Baseline Design — the design under which the AWS-hosted website was built (2023)
 - ICT Strategic Plan — direction for the LMS migration and broader cloud transition
