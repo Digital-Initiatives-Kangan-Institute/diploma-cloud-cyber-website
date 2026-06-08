@@ -33,7 +33,7 @@ uocReferences:
 
 ### Context and starting point
 
-Sam Walker opened by setting the scene. The website is cloud-hosted in AWS following the 2023 migration, and that single-Availability-Zone environment is the starting point — this engagement extends it, it does not rebuild it. The driver is the new education partnership: YAT is standing up an offshore campus in India (GIFT City), and the website is the front door prospective students from that market will use to find courses and apply. Dana Mercer stressed that the website is now commercially critical — it is where the India intake begins. Sam framed two outcomes: the site has to **reach** the new audience acceptably, and — now that an offshore intake depends on it — it has to be **recoverable** if something goes badly wrong. Sam framed recovery as the headline of this engagement.
+Sam Walker opened by setting the scene. The website is cloud-hosted in AWS and has been hardened to Multi-AZ high availability following the 2023 migration; that HA environment is the starting point — this engagement extends it, it does not rebuild it. The driver is the new education partnership: YAT is standing up an offshore campus in India (GIFT City), and the website is the front door prospective students from that market will use to find courses and apply. Dana Mercer stressed that the website is now commercially critical — it is where the India intake begins. Sam framed two outcomes: the site has to **reach** the new audience acceptably, and — now that an offshore intake depends on it — it has to be **recoverable** if something goes badly wrong. Sam framed recovery as the headline of this engagement.
 
 ### Global reach and what "global" means
 
@@ -41,9 +41,9 @@ Pat asked Sam and Dana to be specific about "global user base." They clarified t
 
 Dana stressed the website is **read-heavy** — visitors mostly browse marketing pages and the course catalogue, with comparatively little writing back (the enquiry / application form). She wants the India audience to get acceptable response times despite the distance, and asked MTS to factor content delivery into the design rather than simply hosting everything in Australia and hoping. Pat noted that edge content delivery is the usual answer to that and would be covered in the plan.
 
-### Single-AZ starting point
+### Existing HA baseline
 
-Sam was candid that the 2023 deployment was a deliberately low-risk pilot — a single instance in a single Availability Zone, with no load balancer or redundancy. Now that the site is business-critical, that is no longer acceptable. He asked that the expansion remove those single points of failure on the path that matters (the public site and the enquiry intake), and noted that the web-scale work needed for the global audience should largely deliver that in-region resilience as a by-product.
+Sam noted the website has already been hardened to Multi-AZ high availability — it is no longer the single-instance 2023 pilot, so in-region resilience (instance and single-AZ failure) is already in place and must be preserved. This engagement is about extending the platform **beyond** that: global reach for the India audience, and recovery from the loss of the **whole region**.
 
 ### Disaster recovery — the priority
 

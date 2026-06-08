@@ -26,7 +26,7 @@ YAT and MTS are referred to collectively as the **Parties** and individually as 
 
 ## 2. Background
 
-A. YAT operates its public website (the **Website**) — its marketing site, course catalogue, and online enquiry / application intake, running on an open-source PHP / MySQL content management system — which was migrated from on-premises hosting to AWS as a single-Availability-Zone deployment under a prior engagement between the Parties (the 2023 website cloud migration), now complete.
+A. YAT operates its public website (the **Website**) — its marketing site, course catalogue, and online enquiry / application intake, running on an open-source PHP / MySQL content management system — which was migrated to AWS in 2023 and subsequently hardened to Multi-AZ high availability under prior engagements between the Parties (the website cloud migration and the website HA hardening), now complete.
 
 B. YAT has entered a strategic education partnership establishing an offshore campus in India (located in GIFT City, Gujarat). The Website is YAT's public front door for prospective students, and the new partnership brings a global, India-based prospective-student audience to it.
 

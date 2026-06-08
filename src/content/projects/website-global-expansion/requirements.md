@@ -16,7 +16,7 @@ uocReferences:
 
 The following functional and non-functional requirements for the Website Global Expansion & Disaster Recovery engagement were established by YAT ICT during engagement setup, following consultation with the YAT ICT Manager and the Marketing & Admissions Manager (see the Consultation Notes filed against this project for the consultation record this list was derived from). They set the targets the engagement is delivered against and are referenced by the Disaster Recovery Plan and the subsequent implementation. The data-residency obligations referenced below are detailed in the separate Data Residency & Sovereignty Requirements for this project.
 
-The starting point for the engagement is the existing website cloud environment delivered under the prior 2023 website cloud migration (now complete) — a single-Availability-Zone deployment. This engagement extends that environment to its new role as the global enrolment front-door; it does not rebuild the website.
+The starting point for the engagement is the existing website cloud environment — migrated to AWS in 2023 and since hardened to Multi-AZ high availability (now complete). This engagement extends that environment to its new role as the global enrolment front-door; it does not rebuild the website.
 
 ## Functional requirements
 
@@ -34,7 +34,7 @@ The extended YAT website must:
 
 - **Recovery objectives — RTO ≤ 4 hours, RPO ≤ 1 hour.** In a disaster affecting the primary region, the website must be recoverable with no more than 1 hour of data loss (RPO ≤ 1 hour) and back to operational service within 4 hours (RTO ≤ 4 hours).
 
-- **Resilient serving for the new business-critical role — target ≥ 99.9% for the enrolment path.** As the enrolment front-door for the India campus, the website is now business-critical. The existing deployment is a single instance in a single Availability Zone (a known set of single points of failure). The expansion must remove those single points of failure on the enrolment-critical path (the public site and the enquiry / application intake) and target **≥ 99.9% availability** for it. The web-scale work is expected to deliver much of this in-region resilience.
+- **Maintain the high availability already achieved — ≥ 99.9%.** As the enrolment front-door for the India campus, the website is business-critical, and is already deployed Multi-AZ (in-region fault-tolerant, ≥ 99.9% available). The expansion must **not degrade** that availability; the new work (global serving, cross-region recovery, infrastructure-as-code, and the audit/access-log microservice) builds on top of the existing HA platform.
 
 - **Global performance.** The India audience must receive acceptable response times. The website is read-heavy (marketing pages, course catalogue), with comparatively light write traffic (enquiry / application submissions), which the design should take into account.
 
