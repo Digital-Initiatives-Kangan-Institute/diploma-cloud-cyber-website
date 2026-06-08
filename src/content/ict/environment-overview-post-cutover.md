@@ -38,7 +38,7 @@ A single Windows Server 2016 server is used for on-prem system management and mo
 
 ## Application services
 
-Accounting and office administration services are provided on a single Windows Server 2016 system. Critical functions (e.g. pay runs) are outsourced to ensure required availability.
+The Ledgerline accounting and office-administration system runs in AWS region `ap-southeast-2` (Sydney) as a single-Availability-Zone deployment, migrated from its former on-premises Application Services server. It is an internal, business-hours system reached by finance and administrative staff over the Site-to-Site VPN; payroll remains outsourced to an external bureau. As a single-AZ baseline, it has not been hardened for high availability.
 
 ## LMS
 

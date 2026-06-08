@@ -4,7 +4,6 @@ description: 'Functional and technical specification of the YAT Accounting & Off
 appearsIn:
   - s1-cl1-at1
   - s1-cl1-at2
-  - s1-cl1-at3
 order: 14
 uocReferences:
   - '[ICTCLD502 AC 5] business and functionality requirements'
