@@ -53,6 +53,15 @@ export const PROJECTS: Project[] = [
     appearsIn: ['s1-cl1-at1', 's1-cl1-at2', 's1-cl1-at3', 's1-cl2-at1'],
   },
   {
+    slug: 'website-cloud-migration',
+    displayName: 'MTS – Website Cloud Migration',
+    consultancy: 'MTS Consulting',
+    status: 'completed',
+    timeline: 'Feb 2023 – May 2023',
+    summary: 'YAT’s first move to the cloud — migration of the YAT public website (marketing site, course catalogue, and online enquiry / application intake) from on-premises hosting to a simple single-AZ AWS deployment. Delivered by MTS Consulting as a deliberately low-risk pilot ahead of the larger LMS and Accounting cloud migrations. High availability and disaster recovery were explicitly out of scope for the pilot. Cloud infrastructure scope only — YAT Marketing retained website content and YAT ICT retained DNS and ongoing support.',
+    appearsIn: ['s1-cl1-at1', 's1-cl1-at2', 's1-cl1-at3', 's1-cl2-at1', 's1-cl3-at1'],
+  },
+  {
     slug: 'accounting-cloud-migration',
     displayName: 'MTS – Accounting System Cloud Migration',
     consultancy: 'MTS Consulting',
