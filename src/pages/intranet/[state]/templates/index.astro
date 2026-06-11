@@ -33,9 +33,20 @@ const deploymentReportHref = state.slug.startsWith('s1-cl2')
   ? '/templates/YAT-Deployment-Report-Template-Serverless.docx'
   : '/templates/YAT-Deployment-Report-Template.docx';
 
+// The Team Plan template is specific to team-led engagements (S1-CL3, where a student team
+// leads the improvement). Shown only in those states.
+const isCl3 = state.slug.startsWith('s1-cl3');
+
 // Available templates (static files under /public/templates/). Add entries here
 // as further templates are finalised.
 const templates = [
+  ...(isCl3 ? [{
+    title: 'Team Plan',
+    description:
+      'The YAT team plan template — team objectives and responsibilities, per-member performance expectations, accountability strategies, contingency planning, and task allocation. For an engagement led by a team. Complete the sections that apply.',
+    href: '/templates/YAT-Team-Plan-Template.docx',
+    format: 'DOCX',
+  }] : []),
   {
     title: 'Business Case',
     description:
