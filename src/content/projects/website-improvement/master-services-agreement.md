@@ -32,7 +32,7 @@ A. YAT operates its public website (the **Website**) — the marketing site, cou
 
 B. YAT is establishing an offshore campus partnership in India. The Website is the public front door through which prospective students from that market will discover courses and apply, so YAT wishes to confirm that the Website's cloud infrastructure is **stable, reliable, and fit for purpose** for that role, and that it is **compliant with the Indian regulatory requirements** applicable to the India-campus operation it will serve.
 
-C. YAT has determined to engage an external consultancy to **analyse** the current state of the Website's cloud infrastructure, **propose improvements** (across reliability, scalability, security, cost, and regulatory compliance) in a business case for YAT's approval, and **implement the improvements YAT approves**.
+C. YAT has determined to engage an external consultancy to **analyse** the current state of the Website's cloud infrastructure, **propose improvements** (across reliability, scalability, security, cost, and regulatory compliance) in a Solution Design for YAT's approval, and **implement the improvements YAT approves**.
 
 D. YAT has determined that the cloud infrastructure work is delivered by the consultancy under a Master Services Agreement, while the Website content and CMS application, the India-cohort enquiry handling, and the legal interpretation of YAT's regulatory obligations are retained by YAT in-house Marketing & Admissions, ICT, and Compliance teams.
 
@@ -51,7 +51,7 @@ In this Agreement, unless the context requires otherwise:
 | Term | Meaning |
 |---|---|
 | **Acceptance** | YAT's written confirmation that a Deliverable meets the acceptance criteria in clause 8. |
-| **Approved Improvements** | The improvements set out in the Phase 1 Improvement Business Case that YAT approves for implementation. |
+| **Approved Improvements** | The improvements set out in the Phase 1 Solution Design that YAT approves for implementation. |
 | **Business Day** | A day other than a Saturday, Sunday, or public holiday in Victoria, Australia. |
 | **Business Hours** | 8:30 am to 5:30 pm on a Business Day. |
 | **Change Request** | A written request to vary the scope, deliverables, fees, or timing of the Services, raised and approved under clause 9. |
@@ -80,7 +80,7 @@ MTS will provide the Services in two sequential Phases:
 
 | Phase | Title | Scope summary |
 |---|---|---|
-| Phase 1 | Analysis and Improvement Business Case | Review the current Website cloud infrastructure; assess its stability, reliability, and fitness for purpose as a public-facing front door for a growing, internationally distributed prospective-student audience, and its compliance with the Indian Regulatory Requirements; identify and evaluate improvement options across reliability, scalability, security, and cost; set the improvement goals and performance metrics; prepare an Improvement Business Case and supporting solution design; and present the business case to YAT for approval before any implementation. |
+| Phase 1 | Analysis and Solution Design | Review the current Website cloud infrastructure; assess its stability, reliability, and fitness for purpose as a public-facing front door for a growing, internationally distributed prospective-student audience, and its compliance with the Indian Regulatory Requirements; identify and evaluate improvement options across reliability, scalability, security, and cost; set the improvement goals and performance metrics; prepare a Solution Design setting out the recommended improvements, each with its cost-benefit justification; and present it to YAT for approval before any implementation. |
 | Phase 2 | Implementation | Implement the Approved Improvements in the cloud environment; monitor, test, and demonstrate them against the agreed goals and performance metrics; apply refinements indicated by the results; document the as-deployed result and a long-term improvement strategy; and finalise for sign-off under YAT's Change Management Procedure. |
 
 The specific improvements are **not** prescribed by this Agreement. They are determined by MTS's Phase 1 analysis and become binding for Phase 2 only to the extent YAT approves them as Approved Improvements at the Phase 1 gate.
@@ -90,7 +90,7 @@ The specific improvements are **not** prescribed by this Agreement. They are det
 Detailed scope for each Phase is set out in the supporting project documents:
 
 - **Phase 1 scope** is anchored by the Engagement Role Brief, the Improvement Requirements, the ICT Manager Consultation Notes, the Indian Regulatory Requirements, and the current-state Website records (the Website Infrastructure Specifications, the Website Specification, the Website Operational Costing, and the Website Cloud Architecture — Baseline Design).
-- **Phase 2 scope** is anchored by the Improvement Business Case approved at the conclusion of Phase 1 and YAT's record of Approved Improvements.
+- **Phase 2 scope** is anchored by the Solution Design approved at the conclusion of Phase 1 and YAT's record of Approved Improvements.
 
 MTS will perform the Services with reasonable skill and care, by appropriately qualified personnel, and in compliance with YAT's documented policies and procedures (referenced in clauses 9 and 12 of this Agreement).
 
@@ -115,8 +115,8 @@ This out-of-scope allocation is reflected in the YAT-internal cost categories fo
 |---|---|---|---|
 | D1.1 | Current-state analysis of the Website cloud infrastructure, including its assessment against stability, reliability, and fitness for purpose, and against the Indian Regulatory Requirements | Written analysis document | Submitted document; ICT Manager review |
 | D1.2 | Improvement options and evaluation, with improvement goals and performance metrics | Written options evaluation | Submitted document; ICT Manager review |
-| D1.3 | Improvement Business Case and supporting solution design | Written Business Case + solution design | Submitted Business Case; ICT Manager review prior to approval |
-| D1.4 | Business Case presentation and approval (deploy sign-off) | Live presentation to YAT | Observed presentation; written approval recording the Approved Improvements |
+| D1.3 | Solution Design — the recommended improvements, each with its cost-benefit justification | Written Solution Design | Submitted Solution Design; ICT Manager review prior to approval |
+| D1.4 | Solution Design presentation and approval (sign-off to proceed) | Live presentation to YAT | Observed presentation; written approval recording the Approved Improvements |
 
 ### 6.2 Phase 2 Deliverables
 
@@ -184,7 +184,7 @@ If YAT does not provide a written response within the review period in clause 8.
 
 ### 8.5 Phase progression
 
-MTS will not commence Phase 2 until the Phase 1 Improvement Business Case has been approved and the Approved Improvements recorded (Deliverable D1.4), except with YAT's prior written agreement.
+MTS will not commence Phase 2 until the Phase 1 Solution Design has been approved and the Approved Improvements recorded (Deliverable D1.4), except with YAT's prior written agreement.
 
 ## 9. Change control
 
@@ -248,7 +248,7 @@ MTS will be paid the following fixed fees for satisfactory completion of each Ph
 
 | Phase | Fee (AUD ex GST) |
 |---|---:|
-| Phase 1 — Analysis and Improvement Business Case | $46,000 |
+| Phase 1 — Analysis and Solution Design | $46,000 |
 | Phase 2 — Implementation | $74,000 |
 | **Total Engagement** | **$120,000** |
 

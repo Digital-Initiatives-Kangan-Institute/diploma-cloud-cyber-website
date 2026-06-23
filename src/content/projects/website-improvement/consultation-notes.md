@@ -19,7 +19,7 @@ uocReferences:
 | Date | Thursday 14 May 2026 |
 | Time | 10:00 – 11:05 (1 hour 5 minutes) |
 | Location | YAT College Cremorne campus — ICT Manager's office, Building A Level 2 |
-| Purpose | Brief the MTS Improvement Team on YAT's drivers and constraints for improving the website cloud infrastructure, ahead of the current-state analysis and Improvement Business Case. |
+| Purpose | Brief the MTS Improvement Team on YAT's drivers and constraints for improving the website cloud infrastructure, ahead of the current-state analysis and Solution Design. |
 
 **Attendees:**
 
@@ -41,7 +41,7 @@ The driver, Sam explained, is YAT's offshore campus partnership in India. The we
 
 ### What "improvement" means here — open scope
 
-Pat asked Sam to be specific about scope. Sam was deliberate that the scope is **open**: he is not prescribing a particular change, and he is not asking for any specific architecture. The team is to assess the infrastructure across reliability, scalability, security, and cost, decide where it genuinely needs to be better, and **propose** improvements with a business case. "Tell me what's worth doing and why," he said — "and if something isn't worth doing, tell me that too." Whatever the team recommends, YAT decides what proceeds.
+Pat asked Sam to be specific about scope. Sam was deliberate that the scope is **open**: he is not prescribing a particular change, and he is not asking for any specific architecture. The team is to assess the infrastructure across reliability, scalability, security, and cost, decide where it genuinely needs to be better, and **propose** improvements in a Solution Design. "Tell me what's worth doing and why," he said — "and if something isn't worth doing, tell me that too." Whatever the team recommends, YAT decides what proceeds.
 
 ### The public shopfront — reliability, scale, and exposure
 
@@ -57,15 +57,15 @@ Sam pressed that the improvement should be **proportionate**. The India campus i
 
 ### Protect the content and the visitor experience
 
-Dana was firm on two non-negotiables: the **website content and CMS application must not change** through this work, and the **visitor-facing experience must not be degraded**. This is an infrastructure improvement underneath a site whose look and content stay exactly as visitors see them today.
+Dana was firm on her non-negotiables: the **website application must not change** through this work, **no website content or media may be lost**, and the **visitor-facing experience must not be degraded**. This is an infrastructure improvement underneath a site whose look and content stay exactly as visitors see them today.
 
-### Business case and the approval gate
+### The approval gate
 
-Sam confirmed the engagement follows YAT's Change Management Procedure, and that he wants to **approve the Improvement Business Case before any implementation begins** — the business-case presentation is the gate. Only the improvements YAT approves at that gate proceed to implementation. High-risk implementation steps will need sign-off as usual.
+Sam confirmed the engagement follows YAT's Change Management Procedure, and that he wants to **approve the Solution Design before any implementation begins** — the design presentation is the gate. Only the improvements YAT approves at that gate proceed to implementation. High-risk implementation steps will need sign-off as usual.
 
 ### Change discipline
 
-Dana asked that any production-affecting change avoid the **peak enrolment and application-intake windows**, when the most prospective students are on the site. For the analysis and business case there is no such constraint; for implementation, the team is to schedule around those windows.
+Dana asked that any production-affecting change avoid the **peak enrolment and application-intake windows**, when the most prospective students are on the site. For the analysis and design there is no such constraint; for implementation, the team is to schedule around those windows.
 
 ### How MTS is staffing this
 
@@ -75,10 +75,10 @@ Sam noted MTS is delivering this with an **Improvement Team**, with each member 
 
 ## Agreed next steps
 
-- **MTS Improvement Team to produce:** the current-state analysis (including the compliance assessment against the Indian Regulatory Requirements), the improvement options and goals, and the Improvement Business Case with supporting solution design.
-- **MTS to present:** the Improvement Business Case to YAT for approval before any implementation.
+- **MTS Improvement Team to produce:** the current-state analysis (including the compliance assessment against the Indian Regulatory Requirements), the improvement options and goals, and the Solution Design (with each improvement's cost-benefit justification).
+- **MTS to present:** the Solution Design to YAT for approval before any implementation.
 - **Asha Rao to provide:** the finalised Indian Regulatory Requirements determination for the operation the website serves.
-- **Dana Mercer to confirm:** the business constraints — the no-content-change / no-experience-degradation conditions and the Peak Intake Period windows.
+- **Dana Mercer to confirm:** the business constraints — the no-application-change / no-content-loss / no-experience-degradation conditions and the Peak Intake Period windows.
 - **Sam to authorise:** MTS Improvement Team accounts on AWS Academy for the engagement.
 
 ---

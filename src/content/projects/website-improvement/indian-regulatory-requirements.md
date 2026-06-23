@@ -15,7 +15,7 @@ uocReferences:
 
 YAT's offshore campus operates in India and, in respect of that operation, is subject to Indian data-protection and cyber-security law. Because the public website is the front door through which India-market prospective students discover courses and apply, it handles personal data of those individuals and operates as part of that India-facing operation — so it falls within scope of these obligations.
 
-This document is the **YAT Compliance area's determination** of the Indian instruments that apply and what they require, provided as **reference material** for the Improvement Team. The team is to **assess the current website cloud infrastructure against these obligations**, identify any gaps, and propose what would close them in the Improvement Business Case. It is the team's job to determine the specific technical requirements and the improvements; **this document states the obligations, not the solution.**
+This document is the **YAT Compliance area's determination** of the Indian instruments that apply and what they require, provided as **reference material** for the Improvement Team. The team is to **assess the current website cloud infrastructure against these obligations**, identify any gaps, and propose what would close them in the Solution Design. It is the team's job to determine the specific technical requirements and the improvements; **this document states the obligations, not the solution.**
 
 The division of responsibility is fixed: **the YAT Compliance area owns the interpretation of the law; MTS assesses and improves the infrastructure to satisfy the requirements as determined, and does not advise on the law.**
 
@@ -42,7 +42,7 @@ Cyber-security directions applicable to organisations operating ICT systems for 
 ## How this is used
 
 - These obligations are an **input** to the team's current-state analysis. The team assesses whether the website's current cloud infrastructure can meet them — log residency and retention, breach-reporting readiness, and the Data Fiduciary security expectations for the prospective-student personal data the site collects.
-- Any **gap** the team identifies becomes a candidate improvement, proposed and justified in the Improvement Business Case.
+- Any **gap** the team identifies becomes a candidate improvement, proposed and justified in the Solution Design.
 - The **specific technical requirements, the goals and metrics, and the proposed infrastructure changes are the team's determination** — they are not set here.
 
 ## Scope and ownership

@@ -16,7 +16,7 @@ This brief sets out the roles, responsibilities, and reporting relationships for
 
 YAT College has engaged MTS Consulting to improve the cloud infrastructure of its public website, which runs in AWS as the single-Availability-Zone deployment migrated from on-premises in 2023. The driver is YAT's offshore campus partnership in India: the website is the public front door through which India-market prospective students will discover courses and apply, so YAT wants the infrastructure confirmed as stable, reliable, and fit for purpose for that growing, internationally distributed audience, and confirmed compliant with the Indian regulatory requirements applicable to the operation it serves — and improved where it falls short. The engagement is structured in two sequential Phases:
 
-1. **Phase 1 — Analysis and Improvement Business Case.** Review the current Website cloud infrastructure; assess its stability, reliability, and fitness for purpose, and its compliance with the Indian Regulatory Requirements; identify and evaluate improvement options across reliability, scalability, security, and cost; set the improvement goals and performance metrics; prepare an Improvement Business Case and supporting solution design; and present it to YAT for approval before any implementation.
+1. **Phase 1 — Analysis and Solution Design.** Review the current Website cloud infrastructure; assess its stability, reliability, and fitness for purpose, and its compliance with the Indian Regulatory Requirements; identify and evaluate improvement options across reliability, scalability, security, and cost; set the improvement goals and performance metrics; prepare a Solution Design setting out the recommended improvements, each with its cost-benefit justification; and present it to YAT for approval before any implementation.
 2. **Phase 2 — Implementation.** Implement the improvements YAT approves; monitor, test, and demonstrate them against the agreed goals and metrics; document the as-deployed result and a long-term improvement strategy; and finalise for sign-off under YAT's Change Management Procedure.
 
 Cloud infrastructure work is in scope for MTS. The Website content and CMS application (retained by YAT Marketing & Admissions), the India-cohort enquiry handling, the legal interpretation of YAT's Indian regulatory obligations (owned by the YAT Compliance area), and end-user support are retained by YAT in-house teams. The scope split is summarised in §3 below and detailed in the Master Services Agreement.
@@ -32,8 +32,8 @@ The Improvement Team is the day-to-day delivery unit on the MTS side.
 | | |
 |---|---|
 | **Reports to** | Pat Lin, MTS Senior Consultant |
-| **Responsibilities** | Analyse the current Website cloud infrastructure and its compliance position; design and evaluate the improvements; produce the analysis, Improvement Business Case, and Deployment Report required for each Phase; implement and validate the Approved Improvements in Phase 2; engage with the YAT ICT Manager on acceptance review and feedback. Each member owns one improvement dimension; the lead role rotates. |
-| **Authorities** | Technical analysis, design, and implementation within agreed scope. Recommends — does not approve — improvements; YAT approves the business case. Raises Change Requests for scope, deliverable, fee, or timing variations (approved per MSA §9 and the YAT Change Management Procedure). |
+| **Responsibilities** | Analyse the current Website cloud infrastructure and its compliance position; design and evaluate the improvements; produce the analysis, Solution Design, and Deployment Report required for each Phase; implement and validate the Approved Improvements in Phase 2; engage with the YAT ICT Manager on acceptance review and feedback. Each member owns one improvement dimension; the lead role rotates. |
+| **Authorities** | Technical analysis, design, and implementation within agreed scope. Recommends — does not approve — improvements; YAT approves the Solution Design at the Phase 1 presentation. Raises Change Requests for scope, deliverable, fee, or timing variations (approved per MSA §9 and the YAT Change Management Procedure). |
 | **Key liaisons** | Pat Lin (supervision, deliverable approval); Sam Walker, YAT ICT Manager (acceptance); Dana Mercer, Marketing & Admissions Manager (website business owner); YAT Compliance area (regulatory determinations). |
 
 ### MTS Senior Consultant — Pat Lin
@@ -50,7 +50,7 @@ The Improvement Team is the day-to-day delivery unit on the MTS side.
 | | |
 |---|---|
 | **Reports to** | YAT Chief Financial Officer |
-| **Responsibilities** | Engagement Sponsor on the YAT side; acceptance authority for each Deliverable (MSA §8); approves the Improvement Business Case at the Phase 1 presentation and records the Approved Improvements; approves Change Requests within the operational thresholds in the YAT Change Management Procedure; escalates material spend/change to YAT senior management; operational owner of the YAT Change Management Procedure. |
+| **Responsibilities** | Engagement Sponsor on the YAT side; acceptance authority for each Deliverable (MSA §8); approves the Solution Design at the Phase 1 presentation and records the Approved Improvements; approves Change Requests within the operational thresholds in the YAT Change Management Procedure; escalates material spend/change to YAT senior management; operational owner of the YAT Change Management Procedure. |
 | **Authorities** | Per the YAT Change Management Procedure for low and medium-risk changes; escalates material spend/change to senior management. |
 | **Key liaisons** | Pat Lin (engagement liaison); Dana Mercer (website business owner); YAT Compliance area; YAT CFO and senior management (escalation / approval). |
 
@@ -76,7 +76,7 @@ The Master Services Agreement (§§4–5) is the authoritative reference for eng
 **In scope for MTS**
 
 - Current-state analysis, compliance assessment against the Indian Regulatory Requirements, and improvement options/evaluation (Phase 1)
-- Improvement Business Case, supporting solution design, and the approval presentation (Phase 1)
+- Solution Design (the recommended improvements with cost-benefit justification) and the approval presentation (Phase 1)
 - Implementation of the Approved Improvements, with monitoring/testing, Deployment Report, and final sign-off (Phase 2)
 - All MTS-produced consulting documentation
 
